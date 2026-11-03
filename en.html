@@ -421,8 +421,58 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
   .calc .row .d{font-size:13px;color:#5f5f5f;font-variant-numeric:tabular-nums}
   .calc .row .c{font-size:12px;color:#8a8a8a;margin-top:4px}
   #tarieven .panel>details.more{display:none!important}
+  .calc .d2{font-size:12.5px;color:#6a6a6a;margin-top:3px;font-variant-numeric:tabular-nums;line-height:1.45}
+  .calc .help{margin:18px 0 8px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(17,17,17,.08);text-align:center}
+  .calc .help p{font-size:15px!important;line-height:1.5!important;color:#2a2a2a!important;margin:0 0 12px!important}
+  .calc .listbtn{display:block;width:100%;margin-top:10px;font:500 14px 'General Sans',sans-serif;letter-spacing:.04em;color:#151515;background:none;border:1px solid rgba(17,17,17,.25);border-radius:999px;padding:13px 16px;cursor:pointer}
+  .calc .list2 h4{font:300 24px/1.2 'Sentient',Georgia,serif;margin:22px 0 8px}
+  .calc .lp{margin-bottom:14px}.calc .lp>b{display:block;font-weight:500;font-size:16px;margin:10px 0 6px}
+  .calc .lr{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(17,17,17,.08);margin-bottom:8px}
+  .calc .lt{font-size:14px;font-weight:500;margin-bottom:6px}.calc .lt span{font-weight:400;color:#6a6a6a}
+  .calc .lv{padding:10px 0 4px;border-top:1px solid rgba(17,17,17,.1)}.calc .lv:first-of-type{border-top:0}
+  .calc .lh{font-size:11.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#6a6a6a;margin-bottom:6px}
+  .calc .ln{display:flex;justify-content:space-between;gap:12px;font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums;color:#3a3a3a}
+  .calc .ln.pay{font-weight:500;color:#151515;font-size:16px}
   .calc .note2{font-size:13px!important;line-height:1.5!important;color:#5f5f5f!important;margin:4px 2px 0!important}
 }
+
+/* mobile menu */
+.mbtn,.mnav{display:none}
+@media (max-width:900px){
+  header .lang{display:none!important}
+  .mbtn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-left:8px;border:0;border-radius:999px;padding:0;cursor:pointer;
+    background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);
+    box-shadow:inset 0 0 0 1px rgba(17,17,17,.08),0 6px 18px rgba(17,17,17,.08);color:#111;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex:none;position:relative;z-index:62}
+  .mbtn i{position:absolute;left:15px;right:15px;height:1.6px;border-radius:2px;background:currentColor;transition:transform .42s cubic-bezier(.2,.8,.2,1)}
+  .mbtn i:nth-child(1){transform:translateY(-4px)}.mbtn i:nth-child(2){transform:translateY(4px)}
+  html.mopen .mbtn i:nth-child(1){transform:rotate(45deg)}html.mopen .mbtn i:nth-child(2){transform:rotate(-45deg)}
+  .mbtn:active{transform:scale(.94)}
+  .mbtn:focus-visible,.mnav a:focus-visible{outline:2px solid #111;outline-offset:3px}
+  header nav{display:flex;align-items:center}
+  .mnav{display:flex;flex-direction:column;position:fixed;inset:0;z-index:60;overflow-y:auto;overscroll-behavior:contain;
+    padding:calc(max(8px,env(safe-area-inset-top)) + 84px) 24px calc(28px + env(safe-area-inset-bottom));
+    background:rgba(250,249,247,.9);-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);
+    opacity:0;visibility:hidden;transition:opacity .32s cubic-bezier(.2,.8,.2,1),visibility 0s .32s}
+  html.mopen .mnav{opacity:1;visibility:visible;transition:opacity .32s cubic-bezier(.2,.8,.2,1),visibility 0s}
+  html.mopen,html.mopen body{overflow:hidden}
+  html.mopen header{z-index:61}
+  .mnav ol{list-style:none;margin:0;padding:0;counter-reset:m}
+  .mnav li{counter-increment:m;border-bottom:1px solid rgba(17,17,17,.1);opacity:0;transform:translateY(10px);transition:opacity .4s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1)}
+  html.mopen .mnav li{opacity:1;transform:none;transition-delay:calc(var(--i) * 32ms + 60ms)}
+  .mnav li a{display:flex;align-items:baseline;gap:14px;min-height:56px;padding:12px 2px;font:300 clamp(24px,7.4vw,30px)/1.15 'Sentient',Georgia,serif;color:#111;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  .mnav li a::before{content:counter(m,decimal-leading-zero);font:500 11px/1 'General Sans',sans-serif;letter-spacing:.08em;color:#8a8a8a;min-width:20px;transform:translateY(-3px)}
+  .mnav li a:active{opacity:.55}
+  .mnav .mft{margin-top:auto;padding-top:28px;opacity:0;transition:opacity .4s .25s}
+  html.mopen .mnav .mft{opacity:1}
+  .mnav .mlg{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6a6a6a}
+  .mnav .mlg span{margin-right:auto}
+  .mnav .mlg a{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:44px;border-radius:999px;color:#111;text-decoration:none;font-weight:500;box-shadow:inset 0 0 0 1px rgba(17,17,17,.15)}
+  .mnav .mlg a.on{background:#111;color:#fff;box-shadow:none}
+  .mnav .mcall{display:flex;align-items:center;justify-content:center;height:56px;border-radius:999px;background:#111;color:#fff;font-size:15px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+  .mnav .maddr{margin:14px 0 0;text-align:center;font-size:13px;color:#6a6a6a}
+}
+@media (max-width:380px){.mbtn{width:44px;height:44px;margin-left:6px}.mbtn i{left:13px;right:13px}}
+@media (prefers-reduced-motion:reduce){.mnav,.mnav li,.mbtn i,.mnav .mft{transition:none!important}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -443,9 +493,9 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
   <nav>
     <div class="navg glass"><a class="lk" href="#klachten">Conditions</a><a class="lk" href="#aanpak">Approach</a><a class="lk" href="#therapeut">Therapist</a><a class="lk" href="#tarieven">Fees</a></div>
     <div class="lang glass" role="navigation" aria-label="Choose language"><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr">FR</a><a href="en.html" hreflang="en" lang="en" class="on" aria-current="true">EN</a></div>
-    <a class="pill" href="tel:+3223089295">Call 02/308.92.95</a>
+    <a class="pill" href="tel:+3223089295">Call 02/308.92.95</a><button class="mbtn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
   </nav>
-</header>
+</header><div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true"><nav aria-label="Menu"><ol><li style="--i:0"><a href="#klachten">Conditions</a></li><li style="--i:1"><a href="#aanpak">Manual therapy</a></li><li style="--i:2"><a href="#kinesitherapie">Physiotherapy</a></li><li style="--i:3"><a href="#sport">Sport and home visits</a></li><li style="--i:4"><a href="#therapeut">The therapist</a></li><li style="--i:5"><a href="#tarieven">Fees</a></li><li style="--i:6"><a href="#faq">Questions</a></li><li style="--i:7"><a href="#contact">Contact and hours</a></li></ol></nav><div class="mft"><div class="mlg"><span>Language</span><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr">FR</a><a href="en.html" hreflang="en" lang="en" class="on" aria-current="true">EN</a></div><a class="mcall" href="tel:+3223089295">Call 02/308.92.95</a><p class="maddr" translate="no">Paardenwater 14A, 1560 Hoeilaart</p></div></div>
 
 <main id="top"><span id="inhoud" tabindex="-1"></span>
 <section class="s hero" data-state="0">
@@ -497,7 +547,7 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
   </div>
 </section>
 
-<section class="s right" data-state="3">
+<section class="s right" data-state="3" id="kinesitherapie">
   <div class="copy glass card">
     <span class="lab rv">Physiotherapy</span>
     <h2 class="rv">Recover what you could do. And take it <em class="ac" style="--ac:var(--c4)">further</em>.</h2>
@@ -511,7 +561,7 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
   </div>
 </section>
 
-<section class="s left" data-state="4">
+<section class="s left" data-state="4" id="sport">
   <div class="copy glass card">
     <figure class="room rv"><img src="zaal.jpg" alt="The exercise room at Praktijk E.S. with wall bars, cable machine, bike, treadmill and weights" width="1100" height="578" loading="lazy" decoding="async"><figcaption>The exercise room at the practice</figcaption></figure>
     <span class="lab rv">Sport, rehabilitation and home visits</span>
@@ -972,7 +1022,7 @@ document.querySelectorAll('.tbl .scroll').forEach(el=>{const f=()=>el.classList.
 <script>
 (function(){
 if(!matchMedia('(max-width:900px)').matches)return;
-const S={"loc": "en-IE", "title": "What will you pay?", "where": "Where", "vk": "Increased reimbursement", "no": "No", "yes": "Yes", "vkhint": "Not sure? Your health insurance fund can tell you.", "type": "Type of treatment", "typehint": "Not sure? Choose common condition; we will check it together at the first session.", "pay": "You pay", "fee": "Fee", "back": "Reimbursement", "code": "Insurance code", "full": "View the full table"};
+const S={"loc": "en-IE", "title": "What will you pay?", "where": "Where", "vk": "Increased reimbursement", "no": "No", "yes": "Yes", "vkhint": "Not sure? Your health insurance fund can tell you.", "type": "Type of treatment", "typehint": "Not sure? Choose common condition; we will check it together at the first session.", "pay": "You pay", "fee": "Fee", "back": "Reimbursement", "code": "Insurance code", "full": "View the full table", "treat": "Treatment", "intake": "Intake and report", "travel": "Travel", "rem": "Co-payment", "sup": "Supplement", "without": "Without increased reimbursement", "withvk": "With increased reimbursement", "all": "All fees as a list", "hide": "Hide list", "call": "Questions about what you pay? Feel free to call, I will explain.", "callbtn": "Call 02/308.92.95", "home": "At home, the fee consists of the treatment, the travel fee and, at the first session, the intake with written report."};
 const panel=document.querySelector('#tarieven .panel');const tbl=panel&&panel.querySelector('.tbl');if(!tbl)return;
 const num=t=>{t=(t||'').replace(/[^\d,.-]/g,'').replace(/\.(?=\d{3})/g,'').replace(',','.');const v=parseFloat(t);return isNaN(v)?0:v;};
 const fmt=new Intl.NumberFormat(S.loc,{style:'currency',currency:'EUR'});
@@ -982,16 +1032,18 @@ tbl.querySelectorAll('h3').forEach(h=>{const sc=h.nextElementSibling;if(!sc)retu
   sc.querySelectorAll('tbody tr').forEach(tr=>{const th=tr.querySelector('th');if(th&&!th.classList.contains('cont')){cur={name:th.textContent.trim(),rows:[]};pl.paths.push(cur);}
     if(!cur)return;const z=tr.querySelector('.zit');const sm=z.querySelector('small');const label=z.childNodes[0].textContent.trim();const st=sm?sm.textContent.trim():'';
     const parts=st.split('·').map(x=>x.trim());const n=tr.querySelectorAll('td.n');const g=(i,c)=>num(n[i]&&n[i].querySelector('.'+c)?n[i].querySelector('.'+c).textContent:'');
-    cur.rows.push({label,meta:parts[0]||'',code:parts.slice(1).join(' · '),z:{fee:g(0,'z'),back:g(1,'z')},m:{fee:g(0,'m'),back:g(1,'m')}});});
+    cur.rows.push({label,meta:parts[0]||'',code:parts.slice(1).join(' · '),z:{fee:g(0,'z'),back:g(1,'z'),rem:g(2,'z'),sup:g(3,'z')},m:{fee:g(0,'m'),back:g(1,'m'),rem:g(2,'m'),sup:g(3,'m')}});});
   places.push(pl);});
 if(!places.length)return;
+const BD=[[[[39, 18, 0], [30.8, 7.19, 0]], [[39, 0, 0], [30.8, 0, 0]], [[39, 32, 0], [30.8, 32.86, 0]], [[39, 0, 0], [30.8, 0, 0]], [[39, 32, 0], [30.8, 32.86, 0]], [[39, 0, 0], [30.8, 0, 0]], [[39, 32, 0], [30.8, 32.86, 0]], [[39, 0, 0], [30.8, 0, 0]], [[39, 0, 0], [30.8, 0, 0]]], [[[39, 18, 5.5], [33.88, 7.19, 1.16]], [[39, 0, 5.5], [33.88, 0, 1.16]], [[39, 32, 5.5], [33.88, 32.86, 1.16]], [[39, 0, 5.5], [33.88, 0, 1.16]], [[39, 32, 5.5], [33.88, 32.86, 1.16]], [[39, 0, 5.5], [33.88, 0, 1.16]], [[39, 32, 5.5], [33.88, 32.86, 1.16]], [[39, 0, 5.5], [33.88, 0, 1.16]], [[39, 0, 5.5], [33.88, 0, 1.16]], [[39, 0, 5.5], [27.72, 0, 1.35]]]];let ri;places.forEach((pl,pi)=>{ri=0;pl.paths.forEach(pa=>pa.rows.forEach(r=>{const b=BD[pi]&&BD[pi][ri++];if(b){r.z.bd=b[0];r.m.bd=b[1];}}));});
+const parts=v=>{if(!v.bd)return '';const [t,i,tr]=v.bd;const a=[`${S.treat} ${fmt.format(t)}`];if(i)a.push(`${S.intake} ${fmt.format(i)}`);if(tr)a.push(`${S.travel} ${fmt.format(tr)}`);return a.join(' + ');};
 const st={p:0,v:'z',k:0};
 const box=document.createElement('div');box.className='calc';
 box.innerHTML=`<span class="lab">${S.title}</span>
 <div class="q"><span>${S.where}</span><div class="seg" data-q="p">${places.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${p.name}</button>`).join('')}</div></div>
 <div class="q"><span>${S.vk}</span><div class="seg" data-q="v"><button type="button" data-i="z" aria-pressed="true">${S.no}</button><button type="button" data-i="m" aria-pressed="false">${S.yes}</button></div><p class="qh">${S.vkhint}</p></div>
 <div class="q"><span>${S.type}</span><div class="chips" data-q="k"></div><p class="qh">${S.typehint}</p></div>
-<div class="res" aria-live="polite"></div>`;
+<div class="res" aria-live="polite"></div><div class="help"><p>${S.call}</p><a class="pill" href="tel:+3223089295">${S.callbtn}</a></div><button type="button" class="listbtn" aria-expanded="false">${S.all}</button><div class="list2" hidden></div>`;
 const chips=box.querySelector('.chips'),res=box.querySelector('.res');
 function render(){const pl=places[st.p];if(st.k>=pl.paths.length)st.k=0;
   chips.innerHTML=pl.paths.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===st.k}">${p.name}</button>`).join('');
@@ -999,12 +1051,36 @@ function render(){const pl=places[st.p];if(st.k>=pl.paths.length)st.k=0;
   res.innerHTML=path.rows.map(r=>{const v=r[st.v];const pay=Math.max(0,v.fee-v.back);
     return `<div class="row"><div class="t"><b>${r.label}</b><span>${r.meta}</span></div>
       <div class="big"><span>${S.pay}</span><strong>${fmt.format(pay)}</strong></div>
-      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('')+(st.p===1&&homeNote?`<p class="note2">${homeNote}</p>`:'');}
+      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div><div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('')+(st.p===1?`<p class="note2">${S.home}</p>`:'');}
 box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentElement.dataset.q;if(!q)return;
   if(q==='p')st.p=+b.dataset.i;else if(q==='v')st.v=b.dataset.i;else st.k=+b.dataset.i;
   b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
 const det=panel.querySelector('details.more');const hn=(det||tbl).querySelector('.in p.note')||tbl.querySelector('p.note');const homeNote=hn?hn.textContent.trim():'';
+const lb=box.querySelector('.listbtn'),l2=box.querySelector('.list2');
+lb.addEventListener('click',()=>{const o=l2.hidden;l2.hidden=!o;lb.setAttribute('aria-expanded',o);lb.textContent=o?S.hide:S.all;
+ if(o&&!l2.innerHTML){l2.innerHTML=places.map(pl=>`<h4>${pl.name}</h4>`+pl.paths.map(pa=>`<div class="lp"><b>${pa.name}</b>`+pa.rows.map(r=>`<div class="lr"><div class="lt">${r.label} <span>${r.meta}</span></div>`+
+  [['z',S.without],['m',S.withvk]].map(([k,t])=>{const v=r[k];return `<div class="lv"><div class="lh">${t}</div>
+  <div class="ln"><span>${S.fee}</span><span>${fmt.format(v.fee)}</span></div>
+  <div class="ln"><span>${S.back}</span><span>${fmt.format(v.back)}</span></div>
+  <div class="ln pay"><span>${S.pay}</span><span>${fmt.format(v.fee-v.back)}</span></div>
+  <div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div></div>`;}).join('')+
+  (r.code?`<div class="c">${S.code}: ${r.code}</div>`:'')+`</div>`).join('')+`</div>`).join('')).join('')+`<p class="note2">${S.home}</p>`;}});
 panel.insertBefore(box,det||null);render();
+})();
+</script>
+<script>/* mobile menu */
+(()=>{const b=document.querySelector('.mbtn'),n=document.getElementById('mnav');if(!b||!n)return;
+const S={"open": "Open menu", "close": "Close menu"},H=document.documentElement;let last=null;
+const set=o=>{H.classList.toggle('mopen',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?S.close:S.open);n.setAttribute('aria-hidden',!o);
+ if('inert' in n)n.inert=!o;
+ if(o){last=document.activeElement;setTimeout(()=>{const f=n.querySelector('li a');f&&f.focus({preventScroll:true});},80);}else if(last&&last.focus){last.focus({preventScroll:true});}};
+set(false);
+b.addEventListener('click',()=>set(!H.classList.contains('mopen')));
+n.querySelectorAll('li a').forEach(a=>a.addEventListener('click',e=>{const t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();set(false);
+ requestAnimationFrame(()=>{const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#'+t.id);});}));
+addEventListener('keydown',e=>{if(!H.classList.contains('mopen'))return;if(e.key==='Escape'){set(false);return;}
+ if(e.key==='Tab'){const f=[b,...n.querySelectorAll('a')],i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
+matchMedia('(min-width:901px)').addEventListener('change',m=>{if(m.matches)set(false);});
 })();
 </script>
 </body>
