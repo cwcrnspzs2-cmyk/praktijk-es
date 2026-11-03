@@ -375,6 +375,21 @@ button,summary,.pill,.lang a,.navg .lk,.soc a,.vrb{user-select:none;-webkit-user
 header{padding-top:max(24px,env(safe-area-inset-top));padding-left:max(var(--m),env(safe-area-inset-left));padding-right:max(var(--m),env(safe-area-inset-right))}
 footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 .tbl .scroll{overscroll-behavior-x:contain}
+
+/* ===== premium CSS glass ===== */
+html .glass{background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.64))!important;-webkit-backdrop-filter:blur(20px) saturate(175%);backdrop-filter:blur(20px) saturate(175%);border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),0 1px 2px rgba(17,17,40,.05),0 14px 40px -14px rgba(17,17,40,.22)!important;isolation:isolate}
+html .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(140deg,rgba(255,255,255,1) 0%,rgba(255,255,255,.35) 30%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.10) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+html .glass::after{content:"";position:absolute;left:12%;right:12%;top:0;height:40%;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 50% 0,rgba(255,255,255,.55),rgba(255,255,255,0) 70%);opacity:.7}
+.glass>*{position:relative;z-index:1}
+.navg.glass,.lang.glass{background:rgba(255,255,255,.72)!important}
+.hdr{position:relative}
+@media (max-width:900px){
+  .hdr{border-radius:24px;padding:20px 20px 18px;margin:0 -6px 16px;background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.64));-webkit-backdrop-filter:blur(20px) saturate(175%);backdrop-filter:blur(20px) saturate(175%);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),0 14px 40px -14px rgba(17,17,40,.22)}
+  .hdr h1,.hdr h2{margin-bottom:10px!important}.hdr .lead{margin:0!important}.hdr .lab{margin-bottom:10px!important}
+  .hero h1{text-shadow:none!important}
+  .topfade{height:calc(92px + env(safe-area-inset-top,0px))!important;background:rgba(255,255,255,.62)!important;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
+}
+@media (prefers-reduced-transparency:reduce){html .glass,.hdr{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -402,8 +417,8 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 <main id="top"><span id="inhoud" tabindex="-1"></span>
 <section class="s hero" data-state="0">
   <div class="copy">
-    <span class="lab rv">Kinésithérapie · Thérapie manuelle · Hoeilaart</span>
-    <h1 class="rv">Votre corps,<br><span class="nw">dans son <em class="ac" style="--ac:var(--c1)">ensemble</em>.</span></h1>
+    <div class="hdr"><span class="lab rv">Kinésithérapie · Thérapie manuelle · Hoeilaart</span>
+    <h1 class="rv">Votre corps,<br><span class="nw">dans son <em class="ac" style="--ac:var(--c1)">ensemble</em>.</span></h1></div>
     <div class="glass card heroinfo rv">
       <p>Je ne me limite jamais à une seule articulation. Les autres articulations, les muscles et les nerfs sont toujours pris en compte.</p>
       <p class="addr">Paardenwater 14A, Hoeilaart · aussi à domicile</p>
@@ -416,9 +431,9 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 
 <section class="s center" data-state="1" id="klachten">
   <div class="wide">
-    <span class="lab rv">Où avez-vous mal ?</span>
+    <div class="hdr"><span class="lab rv">Où avez-vous mal ?</span>
     <h2 class="rv"><em class="ac" style="--ac:var(--c2)">Plaintes</em> fréquentes</h2>
-    <p class="lead rv">La thérapie manuelle est particulièrement indiquée pour les plaintes ci-dessous. Je vous accueille également pour d'autres problèmes musculaires, articulaires ou de mouvement.</p>
+    <p class="lead rv">La thérapie manuelle est particulièrement indiquée pour les plaintes ci-dessous. Je vous accueille également pour d'autres problèmes musculaires, articulaires ou de mouvement.</p></div>
     <div class="zones rv">
       <div class="zone glass"><span class="lab">Tête et mâchoire</span><ul><li>Céphalée de tension</li><li>Migraine</li><li>Céphalée cervicogénique</li><li>Problèmes de l'articulation de la mâchoire</li></ul></div>
       <div class="zone glass"><span class="lab">Nuque</span><ul><li>Torticolis</li><li>Coup du lapin</li></ul></div>
@@ -812,11 +827,11 @@ const _v=new THREE.Vector2();
 function sizeRT(){gl.getDrawingBufferSize(_v);rt.setSize(_v.x,_v.y);GU.uRes.value.copy(_v);const qx=Math.max(2,Math.round(_v.x/4)),qy=Math.max(2,Math.round(_v.y/4));rtA.setSize(qx,qy);rtB.setSize(qx,qy);BU.uRes.value.set(qx,qy);}
 sizeRT();
 function blurPass(src,dst,dx,dy){BU.tIn.value=src.texture;BU.uDir.value.set(dx,dy);quad.material=bmat;gl.setRenderTarget(dst);gl.render(pscene,pcam);}
-const glassEls=[...document.querySelectorAll('.glass')];
+const glassEls=[];
 const glassRv=glassEls.map(e=>e.classList.contains('rv')?e:e.closest('.rv'));
 let radii=[];function measureRadii(){radii=glassEls.map(e=>parseFloat(getComputedStyle(e).borderTopLeftRadius)||0);}
 measureRadii();
-document.documentElement.classList.add('lg');
+
 const _hero=document.querySelector('.hero');addEventListener('scroll',()=>document.documentElement.classList.toggle('scrolled',scrollY>60),{passive:true});
 addEventListener('resize',()=>{measureRadii();});
 let _bw=0,_bh=0;
@@ -831,7 +846,7 @@ function renderGlass(){
   }
   gl.getDrawingBufferSize(_v);if(_v.x!==_bw||_v.y!==_bh){_bw=_v.x;_bh=_v.y;sizeRT();}
   GU.uN.value=n;GU.uDpr.value=dp;
-  gl.setRenderTarget(rt);gl.render(scene,cam);
+  if(!n){gl.setRenderTarget(null);gl.render(scene,cam);return;}gl.setRenderTarget(rt);gl.render(scene,cam);
   if(n){blurPass(rt,rtA,1,0);blurPass(rtA,rtB,0,1);blurPass(rtB,rtA,1.8,0);blurPass(rtA,rtB,0,1.8);}
   quad.material=gmat;gl.setRenderTarget(null);gl.render(pscene,pcam);
 }
@@ -848,8 +863,8 @@ function targetS(){const mid=innerHeight*.5,L=secs.length-1;let s=0;secs.forEach
 function fadeAmt(){const r=secs[secs.length-1].getBoundingClientRect();return Math.max(0,Math.min(1,(r.bottom-innerHeight*.4)/(innerHeight*.4)));}
 let mx=9,my=9,tmx=9,tmy=9,hov=0,thov=0,lastMove=0,px=0,py=0;
 addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
-let _pd=null;addEventListener('pointerup',e=>{if(e.pointerType==='mouse'||!_pd)return;if(Math.hypot(e.clientX-_pd[0],e.clientY-_pd[1])<10&&performance.now()-_pd[2]<400){tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();}_pd=null;},{passive:true});
-addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'){_pd=[e.clientX,e.clientY,performance.now()];return;}tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
+const _tf=t=>{tmx=t.clientX/innerWidth*2-1;tmy=-(t.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();};addEventListener('touchstart',e=>{if(e.touches[0])_tf(e.touches[0]);},{passive:true});addEventListener('touchmove',e=>{if(e.touches[0])_tf(e.touches[0]);},{passive:true});
+addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
 document.documentElement.addEventListener('pointerleave',()=>{thov=0;});
 let _cw=0,_ch=0;function fitCanvas(){const w=gl.domElement.clientWidth,h=gl.domElement.clientHeight;if(!w||!h||(w===_cw&&h===_ch))return;_cw=w;_ch=h;cam.aspect=w/h;cam.updateProjectionMatrix();gl.setSize(w,h,false);U.uAspect.value=w/h;}window._fitCanvas=fitCanvas;addEventListener('resize',()=>{fitCanvas();});
 
@@ -910,6 +925,7 @@ document.querySelectorAll('details.more,.faq details').forEach(d=>{
       anim.onfinish=()=>{d.open=false;d.classList.remove('closing');anim=null;};}
   });
 });
+const _sc=()=>document.documentElement.classList.toggle('scrolled',scrollY>40);addEventListener('scroll',_sc,{passive:true});_sc();
 /* 3. current section highlighted in the nav */
 const links=[...document.querySelectorAll('.navg .lk')];
 const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
