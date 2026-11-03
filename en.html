@@ -962,7 +962,7 @@ function frame(now){
   const tm=now/1000;U.uTime.value=tm;
   if(!started){started=true;introStart=now;}
   if(intro<1)intro=Math.min(1,(now-introStart)/2600);
-  const ts=targetS();const _dt=Math.min(.1,(now-(frame._p||now))/1000);frame._p=now;cs+=RM?(ts-cs):(ts-cs)*(1-Math.exp(-_dt*7.5));
+  const ts=targetS();const _dt=Math.min(.1,(now-(frame._p||now))/1000);frame._p=now;cs+=RM?(ts-cs):(ts-cs)*(1-Math.exp(-_dt*7.5));const _snap=window.__esSnap&&now<window.__esSnap;if(_snap)cs=ts;
   let k,t;
   if(intro<1&&ts<.05){setPair(-1,0);U.uT.value=intro;k=0;t=0;}
   else{k=Math.min(ST.length-1,Math.floor(cs));const k2=Math.min(ST.length-1,k+1);t=cs-k;setPair(k,k2);U.uT.value=t;}
@@ -972,7 +972,7 @@ function frame(now){
   U.uMouse.value.set(mx,my);U.uHover.value=hov;U.uRad.value=(MOBILE?.26:.2)*(1+.6*gw);U.uPush.value=.15*(1+.5*gw);
   px=lerp(px,thov?tmx:0,.04);py=lerp(py,thov?tmy:0,.04);
   {const ca=COLS[a[5]],cb=COLS[b[5]];U.uColA.value.setRGB(ca[0],ca[1],ca[2]);U.uColB.value.setRGB(cb[0],cb[1],cb[2]);}
-  {const tf=fadeAmt();U.uFade.value+=(tf-U.uFade.value)*(1-Math.exp(-_dt*10));document.documentElement.style.setProperty('--figfade',U.uFade.value.toFixed(3));}
+  {const tf=fadeAmt();U.uFade.value+=_snap?(tf-U.uFade.value):(tf-U.uFade.value)*(1-Math.exp(-_dt*10));document.documentElement.style.setProperty('--figfade',U.uFade.value.toFixed(3));}
   grp.position.set(lerp(a[1],b[1],e),lerp(a[2],b[2],e),0);
   const s=lerp(a[3],b[3],e);grp.scale.setScalar(s);
   grp.rotation.y=lerp(a[4],b[4],e)+(RM?0:Math.sin(tm*.17)*.12)+px*.35;
@@ -1081,8 +1081,8 @@ n.querySelectorAll('li a').forEach(a=>a.addEventListener('click',e=>{const t=doc
  H.classList.add('mjump');set(false);
  [t,t.nextElementSibling].forEach(x=>x&&x.querySelectorAll('.rv').forEach(r=>r.classList.add('in')));
  const sb=H.style.scrollBehavior;H.style.scrollBehavior='auto';
- const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:'instant'});
- history.replaceState(null,'','#'+t.id);
+ const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:'auto'});
+ history.replaceState(null,'','#'+t.id);window.__esSnap=performance.now()+250;
  requestAnimationFrame(()=>requestAnimationFrame(()=>{H.style.scrollBehavior=sb;H.classList.remove('mjump');}));}));
 addEventListener('keydown',e=>{if(!H.classList.contains('mopen'))return;if(e.key==='Escape'){set(false);return;}
  if(e.key==='Tab'){const f=[b,...n.querySelectorAll('a')],i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
