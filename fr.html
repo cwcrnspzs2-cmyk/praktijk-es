@@ -783,6 +783,7 @@ const ST=MOBILE?[
 ]:[
   ['muscle',2.5,-.32,1.38,-.3,0],['skel',-2.75,-.2,1.35,.3,1],['hand',2.6,-.9,1.65,-.35,2],['spine',-2.7,-.1,1.15,-.9,3],['gear',2.6,-.15,1.3,-.35,4]
 ];
+if(!MOBILE){const fitSk=()=>{const el=document.getElementById('gl');const asp=(el.clientWidth||innerWidth)/(el.clientHeight||innerHeight);const hw=11*Math.tan(17.5*Math.PI/180)*asp,W=el.clientWidth||innerWidth,t=document.querySelector('#klachten .wide'),tl=t?t.getBoundingClientRect().left:W*.39;ST[1][1]=Math.min(-2.2,(tl/2/W-.5)*2*hw);};fitSk();addEventListener('resize',fitSk);}
 const COLS=[[1,.29,.11],[.12,.36,1],[.56,.24,1],[.02,.74,.36],[1,.18,.53]];
 
 /* ---------- three setup ---------- */
