@@ -1081,7 +1081,7 @@ n.querySelectorAll('li a').forEach(a=>a.addEventListener('click',e=>{const t=doc
  H.classList.add('mjump');set(false);
  [t,t.nextElementSibling].forEach(x=>x&&x.querySelectorAll('.rv').forEach(r=>r.classList.add('in')));
  const sb=H.style.scrollBehavior;H.style.scrollBehavior='auto';
- const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:'auto'});
+ const el=t.firstElementChild||t,hd=document.querySelector('header'),hb=hd?hd.getBoundingClientRect().bottom:64,av=innerHeight-hb,eh=el.getBoundingClientRect().height,et=el.getBoundingClientRect().top+scrollY;const off=(t.hasAttribute('data-state')&&eh<=av-24)?hb+(av-eh)/2:hb+14;const y=et-off;scrollTo({top:Math.max(0,y),behavior:'auto'});
  history.replaceState(null,'','#'+t.id);window.__esSnap=performance.now()+250;
  requestAnimationFrame(()=>requestAnimationFrame(()=>{H.style.scrollBehavior=sb;H.classList.remove('mjump');}));}));
 addEventListener('keydown',e=>{if(!H.classList.contains('mopen'))return;if(e.key==='Escape'){set(false);return;}
