@@ -472,6 +472,7 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
   .mnav .maddr{margin:14px 0 0;text-align:center;font-size:13px;color:#6a6a6a}
 }
 @media (max-width:380px){.mbtn{width:44px;height:44px;margin-left:6px}.mbtn i{left:13px;right:13px}}
+html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition:none!important}
 @media (prefers-reduced-motion:reduce){.mnav,.mnav li,.mbtn i,.mnav .mft{transition:none!important}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
@@ -1076,8 +1077,13 @@ const set=o=>{H.classList.toggle('mopen',o);b.setAttribute('aria-expanded',o);b.
  if(o){last=document.activeElement;setTimeout(()=>{const f=n.querySelector('li a');f&&f.focus({preventScroll:true});},80);}else if(last&&last.focus){last.focus({preventScroll:true});}};
 set(false);
 b.addEventListener('click',()=>set(!H.classList.contains('mopen')));
-n.querySelectorAll('li a').forEach(a=>a.addEventListener('click',e=>{const t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();set(false);
- requestAnimationFrame(()=>{const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#'+t.id);});}));
+n.querySelectorAll('li a').forEach(a=>a.addEventListener('click',e=>{const t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();
+ H.classList.add('mjump');set(false);
+ [t,t.nextElementSibling].forEach(x=>x&&x.querySelectorAll('.rv').forEach(r=>r.classList.add('in')));
+ const sb=H.style.scrollBehavior;H.style.scrollBehavior='auto';
+ const y=t.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(H).scrollPaddingTop)||80);scrollTo({top:Math.max(0,y),behavior:'instant'});
+ history.replaceState(null,'','#'+t.id);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{H.style.scrollBehavior=sb;H.classList.remove('mjump');}));}));
 addEventListener('keydown',e=>{if(!H.classList.contains('mopen'))return;if(e.key==='Escape'){set(false);return;}
  if(e.key==='Tab'){const f=[b,...n.querySelectorAll('a')],i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
 matchMedia('(min-width:901px)').addEventListener('change',m=>{if(m.matches)set(false);});
