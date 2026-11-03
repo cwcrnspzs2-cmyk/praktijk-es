@@ -392,6 +392,33 @@ footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 .tbl .scroll{overscroll-behavior-x:contain}
 @media (max-width:900px){header{padding-top:max(8px,env(safe-area-inset-top))!important;padding-bottom:8px}.topfade{height:calc(72px + env(safe-area-inset-top,0px))!important}}
 @media (max-width:900px){html .glass{background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.44))!important;-webkit-backdrop-filter:blur(12px) saturate(180%)!important;backdrop-filter:blur(12px) saturate(180%)!important}.hdr{background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.44))!important;-webkit-backdrop-filter:blur(12px) saturate(180%)!important;backdrop-filter:blur(12px) saturate(180%)!important}.navg.glass,.lang.glass{background:rgba(255,255,255,.7)!important}}
+
+/* ===== mobile tariff helper ===== */
+.calc{display:none}
+@media (max-width:900px){
+  .calc{display:block;margin:8px 0 18px;text-align:left}
+  .calc>.lab{text-align:center}
+  .calc>.lab{margin-bottom:14px}
+  .calc .q{margin:0 0 16px}
+  .calc .q>span{display:block;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#5a5a5a;margin-bottom:8px}
+  .calc .seg{display:flex;gap:4px;padding:4px;border-radius:999px;border:1px solid rgba(17,17,17,.18);background:rgba(255,255,255,.55)}
+  .calc .seg button{flex:1;font:500 14px/1.2 'General Sans',sans-serif;color:#151515;background:none;border:0;border-radius:999px;padding:11px 10px;cursor:pointer;transition:background .2s,color .2s,transform .12s}
+  .calc .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .calc .chips button{font:500 14px/1.2 'General Sans',sans-serif;color:#151515;background:rgba(255,255,255,.6);border:1px solid rgba(17,17,17,.18);border-radius:999px;padding:10px 14px;cursor:pointer;transition:background .2s,color .2s,transform .12s}
+  .calc button[aria-pressed="true"]{background:#151515!important;color:#fff!important;border-color:#151515!important}
+  .calc button:active{transform:scale(.96)}
+  .calc .qh{font-size:13px!important;line-height:1.45!important;color:#5f5f5f!important;margin:8px 2px 0!important}
+  .calc .res{display:grid;gap:10px;margin-top:6px}
+  .calc .row{border-radius:20px;padding:16px 18px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(17,17,17,.08)}
+  .calc .row .t{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#3a3a3a}
+  .calc .row .t b{font-weight:500;color:#151515}
+  .calc .row .big{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:8px 0 4px}
+  .calc .row .big span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5a5a5a}
+  .calc .row .big strong{font-family:'Sentient',Georgia,serif;font-weight:300;font-size:32px;line-height:1;color:#151515;font-variant-numeric:tabular-nums}
+  .calc .row .d{font-size:13px;color:#5f5f5f;font-variant-numeric:tabular-nums}
+  .calc .row .c{font-size:12px;color:#8a8a8a;margin-top:4px}
+  #tarieven details.more{margin-top:4px}
+}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -935,6 +962,46 @@ function mark(){const y=innerHeight*.4;let cur=null;targets.forEach((t,i)=>{cons
 addEventListener('scroll',mark,{passive:true});mark();
 /* 7. table hint disappears at the end */
 document.querySelectorAll('.tbl .scroll').forEach(el=>{const f=()=>el.classList.toggle('end',el.scrollLeft+el.clientWidth>=el.scrollWidth-4);el.addEventListener('scroll',f,{passive:true});new ResizeObserver(f).observe(el);});
+})();
+</script>
+
+<script>
+(function(){
+if(!matchMedia('(max-width:900px)').matches)return;
+const S={"loc": "en-IE", "title": "What will you pay?", "where": "Where", "vk": "Increased reimbursement", "no": "No", "yes": "Yes", "vkhint": "Not sure? Your health insurance fund can tell you.", "type": "Type of treatment", "typehint": "Not sure? Choose common condition; we will check it together at the first session.", "pay": "You pay", "fee": "Fee", "back": "Reimbursement", "code": "Insurance code", "full": "View the full table"};
+const panel=document.querySelector('#tarieven .panel');const tbl=panel&&panel.querySelector('.tbl');if(!tbl)return;
+const num=t=>{t=(t||'').replace(/[^\d,.-]/g,'').replace(/\.(?=\d{3})/g,'').replace(',','.');const v=parseFloat(t);return isNaN(v)?0:v;};
+const fmt=new Intl.NumberFormat(S.loc,{style:'currency',currency:'EUR'});
+// parse: places -> pathologies -> rows {label,meta,code,z:{fee,back},m:{fee,back}}
+const places=[];
+tbl.querySelectorAll('h3').forEach(h=>{const sc=h.nextElementSibling;if(!sc)return;const pl={name:h.textContent.trim(),paths:[]};let cur=null;
+  sc.querySelectorAll('tbody tr').forEach(tr=>{const th=tr.querySelector('th');if(th&&!th.classList.contains('cont')){cur={name:th.textContent.trim(),rows:[]};pl.paths.push(cur);}
+    if(!cur)return;const z=tr.querySelector('.zit');const sm=z.querySelector('small');const label=z.childNodes[0].textContent.trim();const st=sm?sm.textContent.trim():'';
+    const parts=st.split('·').map(x=>x.trim());const n=tr.querySelectorAll('td.n');const g=(i,c)=>num(n[i]&&n[i].querySelector('.'+c)?n[i].querySelector('.'+c).textContent:'');
+    cur.rows.push({label,meta:parts[0]||'',code:parts.slice(1).join(' · '),z:{fee:g(0,'z'),back:g(1,'z')},m:{fee:g(0,'m'),back:g(1,'m')}});});
+  places.push(pl);});
+if(!places.length)return;
+const st={p:0,v:'z',k:0};
+const box=document.createElement('div');box.className='calc';
+box.innerHTML=`<span class="lab">${S.title}</span>
+<div class="q"><span>${S.where}</span><div class="seg" data-q="p">${places.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${p.name}</button>`).join('')}</div></div>
+<div class="q"><span>${S.vk}</span><div class="seg" data-q="v"><button type="button" data-i="z" aria-pressed="true">${S.no}</button><button type="button" data-i="m" aria-pressed="false">${S.yes}</button></div><p class="qh">${S.vkhint}</p></div>
+<div class="q"><span>${S.type}</span><div class="chips" data-q="k"></div><p class="qh">${S.typehint}</p></div>
+<div class="res" aria-live="polite"></div>`;
+const chips=box.querySelector('.chips'),res=box.querySelector('.res');
+function render(){const pl=places[st.p];if(st.k>=pl.paths.length)st.k=0;
+  chips.innerHTML=pl.paths.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===st.k}">${p.name}</button>`).join('');
+  const path=pl.paths[st.k];
+  res.innerHTML=path.rows.map(r=>{const v=r[st.v];const pay=Math.max(0,v.fee-v.back);
+    return `<div class="row"><div class="t"><b>${r.label}</b><span>${r.meta}</span></div>
+      <div class="big"><span>${S.pay}</span><strong>${fmt.format(pay)}</strong></div>
+      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('');}
+box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentElement.dataset.q;if(!q)return;
+  if(q==='p')st.p=+b.dataset.i;else if(q==='v')st.v=b.dataset.i;else st.k=+b.dataset.i;
+  b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
+const det=panel.querySelector('details.more');const sm=det&&det.querySelector('summary');
+if(sm){const t=sm.lastChild;if(t&&t.nodeType===3)t.textContent=S.full;else sm.append(S.full);}
+panel.insertBefore(box,det||null);render();
 })();
 </script>
 </body>
