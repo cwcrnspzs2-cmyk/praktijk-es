@@ -376,7 +376,8 @@ header{padding-top:max(24px,env(safe-area-inset-top));padding-left:max(var(--m),
 footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 .tbl .scroll{overscroll-behavior-x:contain}
 </style>
-<noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}</style></noscript>
+<noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
+</style></noscript>
 </head>
 <body>
 <a class="skip" href="#inhoud">Skip to content</a>
@@ -678,8 +679,8 @@ const COLS=[[1,.29,.11],[.12,.36,1],[.56,.24,1],[.02,.74,.36],[1,.18,.53]];
 
 /* ---------- three setup ---------- */
 const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);cam.position.set(0,0,11);
-const DPR=Math.min(2,devicePixelRatio||1);gl.setPixelRatio(DPR);gl.setSize(innerWidth,innerHeight,false);gl.setClearColor(0xffffff,1);
+const cam=new THREE.PerspectiveCamera(35,(document.getElementById('gl').clientWidth||innerWidth)/(document.getElementById('gl').clientHeight||innerHeight),.1,100);cam.position.set(0,0,11);
+const DPR=Math.min(2,devicePixelRatio||1);gl.setPixelRatio(DPR);gl.setSize(gl.domElement.clientWidth||innerWidth,gl.domElement.clientHeight||innerHeight,false);gl.setClearColor(0xffffff,1);
 const geo=new THREE.BufferGeometry();
 const dA=new Float32Array(N*3),dB=new Float32Array(N*3),kA=new Float32Array(N).fill(1),kB=new Float32Array(N).fill(1),aA=new Float32Array(N*3),aB=new Float32Array(N*3),cA=new Float32Array(N*3),cB=new Float32Array(N*3),rnd=new Float32Array(N*4),sw=new Float32Array(N*3);
 for(let i=0;i<N;i++){const bok=i>=N-BOKEH;rnd.set([R(),bok?1.4+R()*1.2:.6+R()*.8,R(),bok?1:R()],i*4);const d=sdir(),m=.6+R()*1.6;sw.set([d[0]*m,d[1]*m,d[2]*m],i*3);}
@@ -691,7 +692,7 @@ geo.setAttribute('dA',new THREE.BufferAttribute(dA,3));geo.setAttribute('dB',new
 geo.setAttribute('aR',new THREE.BufferAttribute(rnd,4));
 geo.setAttribute('aS',new THREE.BufferAttribute(sw,3));
 geo.boundingSphere=new THREE.Sphere(new THREE.Vector3(),50);
-const U={uT:{value:0},uTime:{value:0},uMouse:{value:new THREE.Vector2(9,9)},uHover:{value:0},uAspect:{value:innerWidth/innerHeight},uSize:{value:(MOBILE?2.0:3.0)*DPR},uRad:{value:MOBILE?.26:.2},uPush:{value:.3},uMotion:{value:RM?0:1},uColA:{value:new THREE.Color(1,.29,.11)},uColB:{value:new THREE.Color(1,.29,.11)},uFade:{value:1},uBoost:{value:1}};
+const U={uT:{value:0},uTime:{value:0},uMouse:{value:new THREE.Vector2(9,9)},uHover:{value:0},uAspect:{value:(document.getElementById('gl').clientWidth||innerWidth)/(document.getElementById('gl').clientHeight||innerHeight)},uSize:{value:(MOBILE?2.0:3.0)*DPR},uRad:{value:MOBILE?.26:.2},uPush:{value:.15},uMotion:{value:RM?0:1},uColA:{value:new THREE.Color(1,.29,.11)},uColB:{value:new THREE.Color(1,.29,.11)},uFade:{value:1},uBoost:{value:1}};
 const mat=new THREE.ShaderMaterial({uniforms:U,transparent:true,depthWrite:true,depthTest:true,blending:THREE.NormalBlending,
 vertexShader:`
 attribute float kA;attribute float kB;attribute vec3 dA;attribute vec3 dB;attribute vec3 aB;attribute vec3 cA;attribute vec3 cB;attribute vec4 aR;attribute vec3 aS;
@@ -710,7 +711,7 @@ void main(){
   vec4 mv=modelViewMatrix*vec4(p,1.);
   vec2 dir=d>.0001?dv/d:vec2(0.,1.);
   float h=fract(sin(dot(c,vec3(12.9898,78.233,37.719)))*43758.5453);
-  float ang=(h-.5)*.55*f;float ca=cos(ang),sa=sin(ang);
+  float ang=(h-.5)*.28*f;float ca=cos(ang),sa=sin(ang);
   vec2 rel=mv.xy-mvC.xy;mv.xy=mvC.xy+mat2(ca,-sa,sa,ca)*rel+dir*f*uPush*(.7+.6*h);
   gl_Position=projectionMatrix*mv;
   float z=-mv.z;
@@ -820,7 +821,7 @@ const _hero=document.querySelector('.hero');addEventListener('scroll',()=>docume
 addEventListener('resize',()=>{measureRadii();});
 let _bw=0,_bh=0;
 function renderGlass(){
-  const Hh=innerHeight,dp=gl.getPixelRatio();let n=0;
+  if(window._fitCanvas)window._fitCanvas();const Hh=gl.domElement.clientHeight||innerHeight,dp=gl.getPixelRatio();let n=0;
   for(let i=0;i<glassEls.length&&n<MAXG;i++){
     const e=glassEls[i];if(!e.offsetParent)continue;if(e._dt===undefined)e._dt=e.parentElement.closest('details');if(e._dt&&!e._dt.open)continue;
     const r=e.getBoundingClientRect();if(r.bottom<0||r.top>Hh||r.width<2||r.height<2)continue;
@@ -846,10 +847,11 @@ const secs=[...document.querySelectorAll('[data-state]')];
 function targetS(){const mid=innerHeight*.5,L=secs.length-1;let s=0;secs.forEach((el,i)=>{const r=el.getBoundingClientRect();if(r.top<=mid){const f=Math.min(1,(mid-r.top)/r.height);const t=Math.max(0,Math.min(1,(f-(i===2||i===3?.3:.55))/(i===2||i===3?.7:.45)));s=i+t*t*(3-2*t);}});return Math.min(s,L);}
 function fadeAmt(){const r=secs[secs.length-1].getBoundingClientRect();return Math.max(0,Math.min(1,(r.bottom-innerHeight*.4)/(innerHeight*.4)));}
 let mx=9,my=9,tmx=9,tmy=9,hov=0,thov=0,lastMove=0,px=0,py=0;
-addEventListener('pointermove',e=>{tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
-addEventListener('pointerdown',e=>{tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
+addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
+let _pd=null;addEventListener('pointerup',e=>{if(e.pointerType==='mouse'||!_pd)return;if(Math.hypot(e.clientX-_pd[0],e.clientY-_pd[1])<10&&performance.now()-_pd[2]<400){tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();}_pd=null;},{passive:true});
+addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'){_pd=[e.clientX,e.clientY,performance.now()];return;}tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
 document.documentElement.addEventListener('pointerleave',()=>{thov=0;});
-addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gl.setSize(innerWidth,innerHeight,false);U.uAspect.value=innerWidth/innerHeight;});
+let _cw=0,_ch=0;function fitCanvas(){const w=gl.domElement.clientWidth,h=gl.domElement.clientHeight;if(!w||!h||(w===_cw&&h===_ch))return;_cw=w;_ch=h;cam.aspect=w/h;cam.updateProjectionMatrix();gl.setSize(w,h,false);U.uAspect.value=w/h;}window._fitCanvas=fitCanvas;addEventListener('resize',()=>{fitCanvas();});
 
 let cs=0,intro=RM?1:0,introStart=0,started=false;
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
@@ -868,7 +870,7 @@ function frame(now){
   const a=ST[k],b=ST[Math.min(ST.length-1,k+1)],e=ease(t);const gw=(a[0]==='gear'?1-e:0)+(b[0]==='gear'?e:0);U.uBoost.value=1+.3*gw;
   if(MOBILE&&performance.now()-lastMove>900)thov=0;
   {const a1=1-Math.exp(-_dt*7.7),a2=1-Math.exp(-_dt*3.7);mx+=(tmx-mx)*a1;my+=(tmy-my)*a1;hov+=(thov-hov)*a2;}
-  U.uMouse.value.set(mx,my);U.uHover.value=hov;U.uRad.value=(MOBILE?.26:.2)*(1+.6*gw);U.uPush.value=.3*(1+.5*gw);
+  U.uMouse.value.set(mx,my);U.uHover.value=hov;U.uRad.value=(MOBILE?.26:.2)*(1+.6*gw);U.uPush.value=.15*(1+.5*gw);
   px=lerp(px,thov?tmx:0,.04);py=lerp(py,thov?tmy:0,.04);
   {const ca=COLS[a[5]],cb=COLS[b[5]];U.uColA.value.setRGB(ca[0],ca[1],ca[2]);U.uColB.value.setRGB(cb[0],cb[1],cb[2]);}
   {const tf=fadeAmt();U.uFade.value+=(tf-U.uFade.value)*(1-Math.exp(-_dt*10));document.documentElement.style.setProperty('--figfade',U.uFade.value.toFixed(3));}
