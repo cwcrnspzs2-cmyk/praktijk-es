@@ -366,16 +366,6 @@ p,li,dd{text-wrap:pretty}
 .faq summary:active{transform:scale(.99)}
 footer .legal{display:inline-flex;gap:18px}
 @media (max-width:900px){.faq summary{font-size:18px;padding:16px 0}.faq details{padding:0 18px}}
-/* ===== mobile native ===== */
-html{-webkit-text-size-adjust:100%}
-html,body{overscroll-behavior-y:none}
-#gl{height:100vh;height:100lvh}
-.hero{min-height:100vh;min-height:100svh}
-button,summary,.pill,.lang a,.navg .lk,.soc a,.vrb{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
-header{padding-top:max(24px,env(safe-area-inset-top));padding-left:max(var(--m),env(safe-area-inset-left));padding-right:max(var(--m),env(safe-area-inset-right))}
-footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
-.tbl .scroll{overscroll-behavior-x:contain}
-@media (max-width:900px){header{padding-top:max(8px,env(safe-area-inset-top))!important;padding-bottom:8px}.topfade{height:calc(72px + env(safe-area-inset-top,0px))!important}}
 
 /* ===== premium CSS glass ===== */
 html .glass{background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.64))!important;-webkit-backdrop-filter:blur(20px) saturate(175%);backdrop-filter:blur(20px) saturate(175%);border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),0 1px 2px rgba(17,17,40,.05),0 14px 40px -14px rgba(17,17,40,.22)!important;isolation:isolate}
@@ -391,6 +381,17 @@ html .glass::after{content:"";position:absolute;left:12%;right:12%;top:0;height:
   .topfade{height:calc(92px + env(safe-area-inset-top,0px))!important;background:rgba(255,255,255,.62)!important;-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
 }
 @media (prefers-reduced-transparency:reduce){html .glass,.hdr{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+/* ===== mobile native ===== */
+html{-webkit-text-size-adjust:100%}
+html,body{overscroll-behavior-y:none}
+#gl{height:100vh;height:100lvh}
+.hero{min-height:100vh;min-height:100svh}
+button,summary,.pill,.lang a,.navg .lk,.soc a,.vrb{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+header{padding-top:max(24px,env(safe-area-inset-top));padding-left:max(var(--m),env(safe-area-inset-left));padding-right:max(var(--m),env(safe-area-inset-right))}
+footer{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.tbl .scroll{overscroll-behavior-x:contain}
+@media (max-width:900px){header{padding-top:max(8px,env(safe-area-inset-top))!important;padding-bottom:8px}.topfade{height:calc(72px + env(safe-area-inset-top,0px))!important}}
+@media (max-width:900px){html .glass{background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.44))!important;-webkit-backdrop-filter:blur(12px) saturate(180%)!important;backdrop-filter:blur(12px) saturate(180%)!important}.hdr{background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.44))!important;-webkit-backdrop-filter:blur(12px) saturate(180%)!important;backdrop-filter:blur(12px) saturate(180%)!important}.navg.glass,.lang.glass{background:rgba(255,255,255,.7)!important}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -860,7 +861,7 @@ function setPair(a,b){if(pair[0]===a&&pair[1]===b)return;pair=[a,b];
 
 /* ---------- scroll + input ---------- */
 const secs=[...document.querySelectorAll('[data-state]')];
-function targetS(){const mid=innerHeight*.5,L=secs.length-1;let s=0;secs.forEach((el,i)=>{const r=el.getBoundingClientRect();if(r.top<=mid){const f=Math.min(1,(mid-r.top)/r.height);const t=Math.max(0,Math.min(1,(f-(i===2||i===3?.3:.55))/(i===2||i===3?.7:.45)));s=i+t*t*(3-2*t);}});return Math.min(s,L);}
+function targetS(){if(MOBILE){const vh=innerHeight;let s=0;for(let i=1;i<secs.length;i++){const c=secs[i-1].firstElementChild||secs[i-1];const bot=c.getBoundingClientRect().bottom;const t=Math.max(0,Math.min(1,(vh*.42-bot)/(vh*.42)));s=i-1+t*t*(3-2*t);if(t<1)break;}return s;}const mid=innerHeight*.5,L=secs.length-1;let s=0;secs.forEach((el,i)=>{const r=el.getBoundingClientRect();if(r.top<=mid){const f=Math.min(1,(mid-r.top)/r.height);const t=Math.max(0,Math.min(1,(f-(i===2||i===3?.3:.55))/(i===2||i===3?.7:.45)));s=i+t*t*(3-2*t);}});return Math.min(s,L);}
 function fadeAmt(){const r=secs[secs.length-1].getBoundingClientRect();return Math.max(0,Math.min(1,(r.bottom-innerHeight*.4)/(innerHeight*.4)));}
 let mx=9,my=9,tmx=9,tmy=9,hov=0,thov=0,lastMove=0,px=0,py=0;
 addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;tmx=e.clientX/innerWidth*2-1;tmy=-(e.clientY/innerHeight*2-1);thov=1;lastMove=performance.now();},{passive:true});
