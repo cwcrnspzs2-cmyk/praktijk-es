@@ -7,7 +7,6 @@
 <title>Praktijk E.S. · Kinésithérapie et thérapie manuelle à Hoeilaart</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website"><meta property="og:title" content="Praktijk E.S. · Kinésithérapie et thérapie manuelle à Hoeilaart"><meta property="og:description" content="Kinésithérapie et thérapie manuelle à Hoeilaart. Aussi à domicile. Traitement en néerlandais, français et anglais."><meta property="og:image" content="https://cwcrnspzs2-cmyk.github.io/praktijk-es/og.jpg"><meta property="og:locale" content="fr_BE"><meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "fr", "mainEntity": [{"@type": "Question", "name": "Comment prendre rendez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Appelez le 02/308.92.95, du lundi au vendredi entre 8h et 21h."}}, {"@type": "Question", "name": "Ai-je besoin d'une prescription ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour un remboursement par votre mutuelle, une prescription médicale est nécessaire. Apportez-la à la première séance."}}, {"@type": "Question", "name": "Combien coûte une séance ?", "acceptedAnswer": {"@type": "Answer", "text": "Une première séance de 45 minutes, avec bilan d'entrée et rapport écrit, coûte 57,00 €. Une séance de suivi de 30 minutes coûte 39,00 €. Le tableau complet figure ci-dessus, dans les tarifs."}}, {"@type": "Question", "name": "Que signifie « non conventionné » pour moi ?", "acceptedAnswer": {"@type": "Answer", "text": "Les honoraires de Praktijk E.S. sont supérieurs au tarif INAMI ; votre mutuelle rembourse le montant INAMI habituel. Si vous bénéficiez de l'intervention majorée, le cabinet applique obligatoirement les tarifs INAMI et votre remboursement est identique à celui d'un kinésithérapeute conventionné."}}, {"@type": "Question", "name": "Praktijk E.S. se déplace-t-il aussi à domicile ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Une visite à domicile se demande par téléphone. Une indemnité de déplacement de 5,50 € s'ajoute (1,16 € avec intervention majorée)."}}, {"@type": "Question", "name": "Comment payer ?", "acceptedAnswer": {"@type": "Answer", "text": "Au cabinet, à chaque séance, en espèces ou via un code QR Mobilepay. À domicile, périodiquement par virement."}}, {"@type": "Question", "name": "Praktijk E.S. traite-t-il aussi les enfants ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, notamment en kinésithérapie respiratoire en cas de problèmes respiratoires."}}, {"@type": "Question", "name": "Dans quelle langue suis-je traité ?", "acceptedAnswer": {"@type": "Answer", "text": "En néerlandais, français ou anglais, selon votre choix."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Physiotherapy", "name": "Praktijk E.S.", "telephone": "+32 2 308 92 95", "address": {"@type": "PostalAddress", "streetAddress": "Paardenwater 14A", "postalCode": "1560", "addressLocality": "Hoeilaart", "addressCountry": "BE"}, "openingHours": "Mo-Fr 08:00-21:00", "availableLanguage": ["nl", "fr", "en"]}</script>
 
 <link rel="alternate" hreflang="nl" href="index.html"><link rel="alternate" hreflang="fr" href="fr.html"><link rel="alternate" hreflang="en" href="en.html"><link rel="alternate" hreflang="x-default" href="index.html">
@@ -484,6 +483,10 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
 .tbl thead th.n{max-width:8.5em}
 .tbl .scroll.end{min-height:0!important;padding:0!important;display:block!important;text-align:left!important}
 @media (min-width:901px){[data-state="4"] .card{margin-left:0!important}}
+
+/* dedup: contact grid without the languages block */
+@media (min-width:901px){.cgrid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media (max-width:900px){.cgrid>div:last-child{grid-column:1/-1}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -506,7 +509,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <div class="lang glass" role="navigation" aria-label="Choisir la langue"><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="en.html" hreflang="en" lang="en">EN</a></div>
     <a class="pill" href="tel:+3223089295">Tél. 02/308.92.95</a><button class="mbtn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Ouvrir le menu"><i></i><i></i></button>
   </nav>
-</header><div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true"><nav aria-label="Menu"><ol><li style="--i:0"><a href="#klachten">Plaintes</a></li><li style="--i:1"><a href="#aanpak">Thérapie manuelle</a></li><li style="--i:2"><a href="#kinesitherapie">Kinésithérapie</a></li><li style="--i:3"><a href="#sport">Sport et domicile</a></li><li style="--i:4"><a href="#therapeut">Le thérapeute</a></li><li style="--i:5"><a href="#tarieven">Tarifs</a></li><li style="--i:6"><a href="#faq">Questions fréquentes</a></li><li style="--i:7"><a href="#contact">Contact et horaires</a></li></ol></nav><div class="mft"><div class="mlg"><span>Langue</span><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="en.html" hreflang="en" lang="en">EN</a></div><a class="mcall" href="tel:+3223089295">Appeler le 02/308.92.95</a><p class="maddr" translate="no">Paardenwater 14A, 1560 Hoeilaart</p></div></div>
+</header><div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true"><nav aria-label="Menu"><ol><li style="--i:0"><a href="#klachten">Plaintes</a></li><li style="--i:1"><a href="#aanpak">Thérapie manuelle</a></li><li style="--i:2"><a href="#kinesitherapie">Kinésithérapie</a></li><li style="--i:3"><a href="#sport">Sport et domicile</a></li><li style="--i:4"><a href="#therapeut">Le thérapeute</a></li><li style="--i:5"><a href="#tarieven">Tarifs</a></li><li style="--i:6"><a href="#contact">Contact et horaires</a></li></ol></nav><div class="mft"><div class="mlg"><span>Langue</span><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr" class="on" aria-current="true">FR</a><a href="en.html" hreflang="en" lang="en">EN</a></div><a class="mcall" href="tel:+3223089295">Appeler le 02/308.92.95</a><p class="maddr" translate="no">Paardenwater 14A, 1560 Hoeilaart</p></div></div>
 
 <main id="top"><span id="inhoud" tabindex="-1"></span>
 <section class="s hero" data-state="0">
@@ -518,7 +521,6 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
       <p class="addr">Paardenwater 14A, Hoeilaart · aussi à domicile</p>
       <p class="tri"><span class="tl">NL · FR · EN</span>Traitement en néerlandais, français et anglais</p>
       <div class="cta"><a class="pill" href="tel:+3223089295">Appeler le 02/308.92.95</a><span class="hours">Lun–ven, 8h à 21h</span></div>
-      <div class="soc"><a href="https://www.instagram.com/praktijkes/" target="_blank" rel="noopener">Instagram</a><a href="http://www.facebook.com/Praktijk.ES/" target="_blank" rel="noopener">Facebook</a><a href="https://www.linkedin.com/company/70533868/" target="_blank" rel="noopener">LinkedIn</a></div>
     </div>
   </div>
 </section>
@@ -534,11 +536,6 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
       <div class="zone glass"><span class="lab">Épaule</span><ul><li>Épaule gelée</li></ul></div>
       <div class="zone glass"><span class="lab">Dos et jambe</span><ul><li>Lumbago</li><li>Syndrome radiculaire, p. ex. sciatique</li></ul></div>
     </div>
-    <p class="focus glass rv"><span class="lab">Le cabinet traite également</span>Problèmes musculaires et articulaires · Blessures sportives · Rééducation après une opération · Problèmes respiratoires chez l'enfant</p>
-    <details class="more rv"><summary><i></i>Tous les domaines de la kinésithérapie</summary><div class="in glass xp">
-      <p>La kinésithérapie est utile dans de nombreux domaines : problèmes musculaires et articulaires, blessures sportives, rééducation postopératoire, affections respiratoires, neurologiques, pédiatriques, cardiovasculaires, pelviennes et gériatriques.</p>
-      <p>Pour plus d'informations générales sur la kinésithérapie, consultez <a class="u" href="http://www.kinesitherapie.be/" target="_blank" rel="noopener">Kinesitherapie.be</a>.</p>
-    </div></details>
   </div>
 </section>
 
@@ -546,15 +543,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
   <div class="copy glass card">
     <span class="lab rv">Thérapie manuelle</span>
     <h2 class="rv">Rétablir le mouvement avec les <em class="ac" style="--ac:var(--c3)">mains</em></h2>
-    <p class="rv">Des mobilisations et manipulations pour rétablir la mobilité des articulations. Le corps est toujours considéré comme un tout.</p>
-    <details class="more rv"><summary><i></i>En savoir plus sur la thérapie manuelle</summary><div class="in">
-      <p>La thérapie manuelle est une qualification professionnelle particulière au sein de la kinésithérapie. Eli Schaillée a obtenu le master de spécialisation correspondant à la VUB en 2009.</p>
-      <dl>
-        <dt>Au sens strict</dt><dd>Des mobilisations et/ou manipulations visant à rétablir la mobilité des articulations. Les interactions avec d'autres structures, comme les autres articulations, les muscles et les nerfs, sont toujours prises en compte.</dd>
-        <dt>Au sens large</dt><dd>Mais aussi du coaching, des exercices ciblés, des explications et des conseils en matière de mouvement et de sport, pour mieux comprendre votre corps et gagner en autonomie.</dd>
-        <dt>Particulièrement utile en cas de</dt><dd>Lumbago, syndrome radiculaire (p. ex. sciatique), torticolis, coup du lapin, céphalée de tension, migraine ou céphalée cervicogénique, problèmes de l'articulation de la mâchoire et épaule gelée.</dd>
-      </dl>
-    </div></details>
+    <p class="rv">Des mobilisations et manipulations pour rétablir la mobilité des articulations. La thérapie manuelle est une qualification professionnelle particulière au sein de la kinésithérapie, qui inclut aussi les exercices et l'accompagnement de la kinésithérapie.</p>
   </div>
 </section>
 
@@ -565,8 +554,10 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <p class="rv">Grâce au coaching, à des exercices ciblés, à des explications et à des conseils en matière de mouvement et de sport, vos capacités de mouvement sont rétablies ou maximisées. Vous comprenez mieux votre corps et devenez plus autonome.</p>
     <span class="lab rv">Les objectifs de Praktijk E.S.</span>
     <p class="words rv">Autonomie<br>Résilience<br>Optimisme<br>Mode de vie actif</p>
-    <details class="more rv"><summary><i></i>L'origine du mot</summary><div class="in">
+    <details class="more rv"><summary><i></i>En savoir plus sur la kinésithérapie</summary><div class="in">
       <p>Le mot kinésithérapie vient de deux mots grecs : <em>kinesis</em>, qui signifie mouvement, et <em>therapia</em>, qui signifie soin.</p>
+      <p>La kinésithérapie est utile dans de nombreux domaines : problèmes musculaires et articulaires, blessures sportives, rééducation postopératoire, affections respiratoires, neurologiques, pédiatriques, cardiovasculaires, pelviennes et gériatriques.</p>
+      <p>Pour plus d'informations générales sur la kinésithérapie, consultez <a class="u" href="http://www.kinesitherapie.be/" target="_blank" rel="noopener">Kinesitherapie.be</a>.</p>
       <p class="quote">« Un esprit sain dans un corps sain : c'est ce que Praktijk E.S. vise pour chacun. »</p>
     </div></details>
   </div>
@@ -578,12 +569,12 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <span class="lab rv">Sport, rééducation et visites à domicile</span>
     <h2 class="rv">Retrouver le <em class="ac" style="--ac:var(--c5)">mouvement</em> après une blessure ou une opération</h2>
     <ul class="list rv">
-      <li><span>Cabinet</span>Paardenwater 14A, 1560 Hoeilaart</li>
+      <li><span>Cabinet</span>Thérapie par l'exercice et rééducation sur appareils</li>
       <li><span>À domicile</span>Traitement chez vous, avec indemnité de déplacement</li>
       <li><span>Enfants</span>Kinésithérapie respiratoire en cas de problèmes respiratoires</li>
     </ul>
     <details class="more rv"><summary><i></i>Visite à domicile : infos pratiques</summary><div class="in">
-      <p>Une visite à domicile se demande par téléphone au 02/308.92.95. À domicile, vous payez périodiquement par virement. Les tarifs à domicile figurent dans le tableau complet des tarifs ci-dessous.</p>
+      <p>Une visite à domicile se demande par téléphone au 02/308.92.95. Les tarifs et le paiement à domicile figurent dans la rubrique Tarifs.</p>
     </div></details>
   </div>
 </section>
@@ -592,7 +583,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
   <div class="copy glass card">
     <span class="lab rv">Le thérapeute</span>
     <h2 class="rv">Eli Schaillée</h2>
-    <p class="rv">Depuis 2009, je suis assistant de travaux pratiques en anatomie dans la formation en kinésithérapie et thérapie manuelle à la VUB. Je parle néerlandais, français et anglais.</p>
+    <p class="rv">Depuis 2009, je suis assistant de travaux pratiques en anatomie dans la formation en kinésithérapie et thérapie manuelle à la VUB.</p>
     <div class="team rv">
       <div class="photo has"><img loading="lazy" src="eli.jpg" alt="Eli Schaillée, kinésithérapeute" width="640" height="800" decoding="async"></div>
       <ul class="list">
@@ -605,11 +596,8 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <details class="more rv"><summary><i></i>Agrément et assurance</summary><div class="in">
       <dl>
         <dt>Numéro INAMI</dt><dd>5/36329/81/527</dd>
-        <dt>Numéro BCE</dt><dd>0835.386.566</dd>
         <dt>Assurance</dt><dd>AMMA</dd>
-        <dt>Membre de</dt><dd>Axxon et Mathera</dd>
-        <dt>Convention</dt><dd>Non conventionné</dd>
-        <dt>Qualité</dt><dd>Répond depuis 2016 aux exigences de qualité du registre national de qualité</dd>
+        <dt>Membre de</dt><dd><a class="u" href="http://www.axxon.be/" target="_blank" rel="noopener">Axxon</a> et <a class="u" href="http://www.mathera.be/" target="_blank" rel="noopener">Mathera</a></dd>
       </dl>
     </div></details>
   </div>
@@ -626,6 +614,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     </div>
     <p class="note rv">Honoraires pour pathologie courante, sans intervention majorée. Praktijk E.S. n'est pas conventionné. Pour les patients bénéficiant de l'intervention majorée, le cabinet applique obligatoirement les tarifs INAMI ; votre remboursement est alors identique à celui d'un kinésithérapeute conventionné.</p>
     <p class="note rv">Paiement : au cabinet, à chaque séance, en espèces ou via un code QR Mobilepay. À domicile, périodiquement par virement.</p>
+    <p class="note rv">Pour un remboursement par votre mutuelle, une prescription médicale est nécessaire. Apportez-la à la première séance.</p>
     <details class="more rv"><summary><i></i>Tableau complet des tarifs</summary><div class="in">
       <div class="vr" role="group" aria-label="Intervention majorée">
         <button type="button" class="vrb" data-v="z" aria-pressed="true">Sans intervention majorée</button>
@@ -654,32 +643,23 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
 <tr class="grp"><th scope="row" class="p">Kinésithérapie périnatale</th><td class="zit">max. 9 par grossesse<small>30 min</small></td><td class="n bd"><span class="z">€ 39,00</span><span class="m">€ 33,88</span></td><td class="n bd"><span class="z">–</span><span class="m">–</span></td><td class="n bd"><span class="z">€ 5,50</span><span class="m">€ 1,16</span></td><td class="n tot"><span class="z">€ 44,50</span><span class="m">€ 35,04</span></td><td class="n"><span class="z">€ 20,73</span><span class="m">€ 31,38</span></td><td class="n"><span class="z">€ 14,31</span><span class="m">€ 3,66</span></td><td class="n"><span class="z">€ 9,46</span><span class="m">–</span></td></tr>
 <tr class="grp"><th scope="row" class="p">Kinésithérapie palliative</th><td class="zit">chaque séance<small>30 min</small></td><td class="n bd"><span class="z">€ 39,00</span><span class="m">€ 27,72</span></td><td class="n bd"><span class="z">–</span><span class="m">–</span></td><td class="n bd"><span class="z">€ 5,50</span><span class="m">€ 1,35</span></td><td class="n tot"><span class="z">€ 44,50</span><span class="m">€ 29,07</span></td><td class="n"><span class="z">€ 21,82</span><span class="m">€ 29,07</span></td><td class="n"><span class="z">€ 7,25</span><span class="m">€ 0,00</span></td><td class="n"><span class="z">€ 15,43</span><span class="m">–</span></td></tr></tbody></table></div>
       </div>
-      <p class="note">À domicile, les honoraires comprennent le traitement, une indemnité de déplacement de 5,50 € (avec intervention majorée 1,16 €) et, lors de la première séance, le bilan d'entrée avec rapport écrit.</p>
     </div></details>
     <span class="flag rv">Montants repris du site actuel · à confirmer</span>
   </div>
 </section>
 
-<section class="s center plain" id="faq">
-  <div class="wide">
-    <span class="lab rv">Questions fréquentes</span>
-    <h2 class="rv">Ce que vous voulez <em class="ac" style="--ac:var(--c2)">savoir</em></h2>
-    <div class="faq rv"><details class="glass more-faq"><summary>Comment prendre rendez-vous ?<i aria-hidden="true"></i></summary><div class="in"><p>Appelez le 02/308.92.95, du lundi au vendredi entre 8h et 21h.</p></div></details><details class="glass more-faq"><summary>Ai-je besoin d'une prescription ?<i aria-hidden="true"></i></summary><div class="in"><p>Pour un remboursement par votre mutuelle, une prescription médicale est nécessaire. Apportez-la à la première séance.</p></div></details><details class="glass more-faq"><summary>Combien coûte une séance ?<i aria-hidden="true"></i></summary><div class="in"><p>Une première séance de 45 minutes, avec bilan d'entrée et rapport écrit, coûte 57,00 €. Une séance de suivi de 30 minutes coûte 39,00 €. Le tableau complet figure ci-dessus, dans les tarifs.</p></div></details><details class="glass more-faq"><summary>Que signifie « non conventionné » pour moi ?<i aria-hidden="true"></i></summary><div class="in"><p>Les honoraires de Praktijk E.S. sont supérieurs au tarif INAMI ; votre mutuelle rembourse le montant INAMI habituel. Si vous bénéficiez de l'intervention majorée, le cabinet applique obligatoirement les tarifs INAMI et votre remboursement est identique à celui d'un kinésithérapeute conventionné.</p></div></details><details class="glass more-faq"><summary>Praktijk E.S. se déplace-t-il aussi à domicile ?<i aria-hidden="true"></i></summary><div class="in"><p>Oui. Une visite à domicile se demande par téléphone. Une indemnité de déplacement de 5,50 € s'ajoute (1,16 € avec intervention majorée).</p></div></details><details class="glass more-faq"><summary>Comment payer ?<i aria-hidden="true"></i></summary><div class="in"><p>Au cabinet, à chaque séance, en espèces ou via un code QR Mobilepay. À domicile, périodiquement par virement.</p></div></details><details class="glass more-faq"><summary>Praktijk E.S. traite-t-il aussi les enfants ?<i aria-hidden="true"></i></summary><div class="in"><p>Oui, notamment en kinésithérapie respiratoire en cas de problèmes respiratoires.</p></div></details><details class="glass more-faq"><summary>Dans quelle langue suis-je traité ?<i aria-hidden="true"></i></summary><div class="in"><p>En néerlandais, français ou anglais, selon votre choix.</p></div></details></div>
-  </div>
-</section>
+
 <section class="s end" id="contact">
   <h2 class="rv">Une douleur ou une blessure ?<br><em class="ac" style="--ac:var(--c1)">Appelez</em> Praktijk E.S.</h2>
   <a class="pill rv" href="tel:+3223089295">Appeler le 02/308.92.95</a>
   <div class="cgrid glass rv">
     <div><span class="lab">Heures d'ouverture</span><p>Du lundi au vendredi<br>8h à 21h</p></div>
     <div><span class="lab">Adresse</span><p>Paardenwater 14A<br>1560 Hoeilaart<br><a class="u" href="https://www.google.com/maps/search/?api=1&amp;query=Paardenwater+14A+1560+Hoeilaart">Voir sur Google Maps</a></p></div>
-    <div><span class="lab">Langues</span><p>Nederlands<br>Français · English</p></div>
     <div><span class="lab">Suivez-nous</span><p><a class="u" href="https://www.instagram.com/praktijkes/">Instagram</a><br><a class="u" href="http://www.facebook.com/Praktijk.ES/">Facebook</a><br><a class="u" href="https://www.linkedin.com/company/70533868/">LinkedIn</a></p></div>
   </div>
   <footer>
-    <span>© Praktijk E.S. · INAMI 5/36329/81/527 · BCE 0835.386.566 · Anatomie : <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" style="margin:0">BodyParts3D © DBCLS</a>, CC BY 4.0</span>
+    <span>© Praktijk E.S. · BCE 0835.386.566 · Anatomie : <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" style="margin:0">BodyParts3D © DBCLS</a>, CC BY 4.0</span>
     <span class="legal"><a href="privacy-fr.html">Politique de confidentialité</a></span>
-    <span>Liens : <a href="http://www.kinesitherapie.be/">Kinesitherapie.be</a><a href="http://www.axxon.be/">Axxon</a><a href="http://www.mathera.be/">Mathera</a></span>
   </footer>
 </section>
 </main>
@@ -1063,7 +1043,7 @@ function render(){const pl=places[st.p];if(st.k>=pl.paths.length)st.k=0;
   res.innerHTML=path.rows.map(r=>{const v=r[st.v];const pay=Math.max(0,v.fee-v.back);
     return `<div class="row"><div class="t"><b>${r.label}</b><span>${r.meta}</span></div>
       <div class="big"><span>${S.pay}</span><strong>${fmt.format(pay)}</strong></div>
-      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div><div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('')+(st.p===1?`<p class="note2">${S.home}</p>`:'');}
+      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div><div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('');}
 box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentElement.dataset.q;if(!q)return;
   if(q==='p')st.p=+b.dataset.i;else if(q==='v')st.v=b.dataset.i;else st.k=+b.dataset.i;
   b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
@@ -1076,7 +1056,7 @@ lb.addEventListener('click',()=>{const o=l2.hidden;l2.hidden=!o;lb.setAttribute(
   <div class="ln"><span>${S.back}</span><span>${fmt.format(v.back)}</span></div>
   <div class="ln pay"><span>${S.pay}</span><span>${fmt.format(v.fee-v.back)}</span></div>
   <div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div></div>`;}).join('')+
-  (r.code?`<div class="c">${S.code}: ${r.code}</div>`:'')+`</div>`).join('')+`</div>`).join('')).join('')+`<p class="note2">${S.home}</p>`;}});
+  (r.code?`<div class="c">${S.code}: ${r.code}</div>`:'')+`</div>`).join('')+`</div>`).join('')).join('');}});
 panel.insertBefore(box,det||null);render();
 })();
 </script>

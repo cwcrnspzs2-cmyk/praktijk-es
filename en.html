@@ -7,7 +7,6 @@
 <title>Praktijk E.S. · Physiotherapy and manual therapy in Hoeilaart</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website"><meta property="og:title" content="Praktijk E.S. · Physiotherapy and manual therapy in Hoeilaart"><meta property="og:description" content="Physiotherapy and manual therapy in Hoeilaart. Home visits too. Treatment in Dutch, French and English."><meta property="og:image" content="https://cwcrnspzs2-cmyk.github.io/praktijk-es/og.jpg"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "How do I book an appointment?", "acceptedAnswer": {"@type": "Answer", "text": "Call 02/308.92.95, Monday to Friday between 8 am and 9 pm."}}, {"@type": "Question", "name": "Do I need a prescription?", "acceptedAnswer": {"@type": "Answer", "text": "For reimbursement by your health insurance fund, a doctor's prescription is required. Bring it to the first session."}}, {"@type": "Question", "name": "What does a session cost?", "acceptedAnswer": {"@type": "Answer", "text": "A first session of 45 minutes, including intake and a written report, costs €57.00. A 30 minute follow-up session costs €39.00. The full table is in the fees section above."}}, {"@type": "Question", "name": "What does “not contracted” mean for me?", "acceptedAnswer": {"@type": "Answer", "text": "The fee at Praktijk E.S. is higher than the NIHDI rate; your health insurance fund reimburses the standard NIHDI amount. If you are entitled to increased reimbursement, the practice is required to apply the NIHDI rates and your reimbursement is the same as with a contracted physiotherapist."}}, {"@type": "Question", "name": "Does Praktijk E.S. make home visits?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Request a home visit by phone. A travel fee of €5.50 is added (€1.16 with increased reimbursement)."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "At the practice per session, in cash or via a Mobilepay QR code. For home visits, periodically by bank transfer."}}, {"@type": "Question", "name": "Does Praktijk E.S. treat children?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, including respiratory physiotherapy for breathing problems."}}, {"@type": "Question", "name": "In which language will I be treated?", "acceptedAnswer": {"@type": "Answer", "text": "In Dutch, French or English, as you prefer."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Physiotherapy", "name": "Praktijk E.S.", "telephone": "+32 2 308 92 95", "address": {"@type": "PostalAddress", "streetAddress": "Paardenwater 14A", "postalCode": "1560", "addressLocality": "Hoeilaart", "addressCountry": "BE"}, "openingHours": "Mo-Fr 08:00-21:00", "availableLanguage": ["nl", "fr", "en"]}</script>
 
 <link rel="alternate" hreflang="nl" href="index.html"><link rel="alternate" hreflang="fr" href="fr.html"><link rel="alternate" hreflang="en" href="en.html"><link rel="alternate" hreflang="x-default" href="index.html">
@@ -484,6 +483,10 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
 .tbl thead th.n{max-width:8.5em}
 .tbl .scroll.end{min-height:0!important;padding:0!important;display:block!important;text-align:left!important}
 @media (min-width:901px){[data-state="4"] .card{margin-left:0!important}}
+
+/* dedup: contact grid without the languages block */
+@media (min-width:901px){.cgrid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media (max-width:900px){.cgrid>div:last-child{grid-column:1/-1}}
 </style>
 <noscript><style>#loader{display:none!important}.rv{opacity:1!important;transform:none!important}#gl{display:none}@media (max-width:900px){.topfade{height:104px!important;background:linear-gradient(#fff 0,#fff 66%,rgba(255,255,255,0))!important}}
 </style></noscript>
@@ -506,7 +509,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <div class="lang glass" role="navigation" aria-label="Choose language"><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr">FR</a><a href="en.html" hreflang="en" lang="en" class="on" aria-current="true">EN</a></div>
     <a class="pill" href="tel:+3223089295">Call 02/308.92.95</a><button class="mbtn" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
   </nav>
-</header><div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true"><nav aria-label="Menu"><ol><li style="--i:0"><a href="#klachten">Conditions</a></li><li style="--i:1"><a href="#aanpak">Manual therapy</a></li><li style="--i:2"><a href="#kinesitherapie">Physiotherapy</a></li><li style="--i:3"><a href="#sport">Sport and home visits</a></li><li style="--i:4"><a href="#therapeut">The therapist</a></li><li style="--i:5"><a href="#tarieven">Fees</a></li><li style="--i:6"><a href="#faq">Questions</a></li><li style="--i:7"><a href="#contact">Contact and hours</a></li></ol></nav><div class="mft"><div class="mlg"><span>Language</span><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr">FR</a><a href="en.html" hreflang="en" lang="en" class="on" aria-current="true">EN</a></div><a class="mcall" href="tel:+3223089295">Call 02/308.92.95</a><p class="maddr" translate="no">Paardenwater 14A, 1560 Hoeilaart</p></div></div>
+</header><div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true"><nav aria-label="Menu"><ol><li style="--i:0"><a href="#klachten">Conditions</a></li><li style="--i:1"><a href="#aanpak">Manual therapy</a></li><li style="--i:2"><a href="#kinesitherapie">Physiotherapy</a></li><li style="--i:3"><a href="#sport">Sport and home visits</a></li><li style="--i:4"><a href="#therapeut">The therapist</a></li><li style="--i:5"><a href="#tarieven">Fees</a></li><li style="--i:6"><a href="#contact">Contact and hours</a></li></ol></nav><div class="mft"><div class="mlg"><span>Language</span><a href="index.html" hreflang="nl" lang="nl">NL</a><a href="fr.html" hreflang="fr" lang="fr">FR</a><a href="en.html" hreflang="en" lang="en" class="on" aria-current="true">EN</a></div><a class="mcall" href="tel:+3223089295">Call 02/308.92.95</a><p class="maddr" translate="no">Paardenwater 14A, 1560 Hoeilaart</p></div></div>
 
 <main id="top"><span id="inhoud" tabindex="-1"></span>
 <section class="s hero" data-state="0">
@@ -518,7 +521,6 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
       <p class="addr">Paardenwater 14A, Hoeilaart · home visits too</p>
       <p class="tri"><span class="tl">NL · FR · EN</span>Treatment in Dutch, French and English</p>
       <div class="cta"><a class="pill" href="tel:+3223089295">Call 02/308.92.95</a><span class="hours">Mon–Fri, 8 am to 9 pm</span></div>
-      <div class="soc"><a href="https://www.instagram.com/praktijkes/" target="_blank" rel="noopener">Instagram</a><a href="http://www.facebook.com/Praktijk.ES/" target="_blank" rel="noopener">Facebook</a><a href="https://www.linkedin.com/company/70533868/" target="_blank" rel="noopener">LinkedIn</a></div>
     </div>
   </div>
 </section>
@@ -534,11 +536,6 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
       <div class="zone glass"><span class="lab">Shoulder</span><ul><li>Frozen shoulder</li></ul></div>
       <div class="zone glass"><span class="lab">Back and leg</span><ul><li>Lumbago</li><li>Radicular syndrome, e.g. sciatica</li></ul></div>
     </div>
-    <p class="focus glass rv"><span class="lab">The practice also treats</span>Muscle and joint problems · Sports injuries · Rehabilitation after surgery · Breathing problems in children</p>
-    <details class="more rv"><summary><i></i>All fields of physiotherapy</summary><div class="in glass xp">
-      <p>Physiotherapy proves its value in many fields: muscle and joint problems, sports injuries, post-operative rehabilitation, and respiratory, neurological, paediatric, cardiovascular, pelvic and geriatric conditions.</p>
-      <p>For more general information about physiotherapy, see <a class="u" href="http://www.kinesitherapie.be/" target="_blank" rel="noopener">Kinesitherapie.be</a>.</p>
-    </div></details>
   </div>
 </section>
 
@@ -546,15 +543,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
   <div class="copy glass card">
     <span class="lab rv">Manual therapy</span>
     <h2 class="rv">Restoring movement by <em class="ac" style="--ac:var(--c3)">hand</em></h2>
-    <p class="rv">Mobilisations and manipulations to restore joint mobility. The body is always treated as a whole.</p>
-    <details class="more rv"><summary><i></i>More about manual therapy</summary><div class="in">
-      <p>Manual therapy is a special professional qualification within physiotherapy. Eli Schaillée obtained the advanced master's degree for it at the VUB in 2009.</p>
-      <dl>
-        <dt>In the strict sense</dt><dd>Mobilisations and/or manipulations aimed at restoring joint mobility. Interactions with other structures, such as other joints, muscles and nerves, are always taken into account.</dd>
-        <dt>In the broad sense</dt><dd>It also includes coaching, targeted exercises, explanation, and movement and sports advice, to improve your understanding and encourage self-reliance.</dd>
-        <dt>Especially useful for</dt><dd>Lumbago, radicular syndrome (e.g. sciatica), torticollis, whiplash, tension headache, migraine or cervicogenic headache, jaw joint problems and frozen shoulder.</dd>
-      </dl>
-    </div></details>
+    <p class="rv">Mobilisations and manipulations to restore joint mobility. Manual therapy is a special professional qualification within physiotherapy, and it also includes the exercises and guidance of physiotherapy.</p>
   </div>
 </section>
 
@@ -565,8 +554,10 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <p class="rv">Through coaching, targeted exercises, explanation and movement and sports advice, your ability to move is restored or maximised. You gain more insight and become more self-reliant.</p>
     <span class="lab rv">What Praktijk E.S. works towards</span>
     <p class="words rv">Self-reliance<br>Resilience<br>Optimism<br>Active lifestyle</p>
-    <details class="more rv"><summary><i></i>Where the word comes from</summary><div class="in">
+    <details class="more rv"><summary><i></i>More about physiotherapy</summary><div class="in">
       <p>The word kinesitherapy comes from two Greek words: <em>kinesis</em>, meaning movement, and <em>therapia</em>, meaning care.</p>
+      <p>Physiotherapy proves its value in many fields: muscle and joint problems, sports injuries, post-operative rehabilitation, and respiratory, neurological, paediatric, cardiovascular, pelvic and geriatric conditions.</p>
+      <p>For more general information about physiotherapy, see <a class="u" href="http://www.kinesitherapie.be/" target="_blank" rel="noopener">Kinesitherapie.be</a>.</p>
       <p class="quote">“A healthy mind in a healthy body: that is what Praktijk E.S. aims for, for everyone.”</p>
     </div></details>
   </div>
@@ -578,12 +569,12 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <span class="lab rv">Sport, rehabilitation and home visits</span>
     <h2 class="rv">Back on the <em class="ac" style="--ac:var(--c5)">move</em> after an injury or surgery</h2>
     <ul class="list rv">
-      <li><span>Practice</span>Paardenwater 14A, 1560 Hoeilaart</li>
+      <li><span>Practice</span>Exercise therapy and rehabilitation with equipment</li>
       <li><span>At home</span>Treatment at your home, with a travel fee</li>
       <li><span>Children</span>Respiratory physiotherapy for breathing problems</li>
     </ul>
     <details class="more rv"><summary><i></i>Home visits: practical info</summary><div class="in">
-      <p>Request a home visit by phone on 02/308.92.95. For home visits you pay periodically by bank transfer. Home visit fees are in the full fee table below.</p>
+      <p>Request a home visit by phone on 02/308.92.95. Home visit fees and payment are listed under Fees.</p>
     </div></details>
   </div>
 </section>
@@ -592,7 +583,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
   <div class="copy glass card">
     <span class="lab rv">The therapist</span>
     <h2 class="rv">Eli Schaillée</h2>
-    <p class="rv">Since 2009, I have been a teaching assistant in anatomy on the physiotherapy and manual therapy programme at the VUB. I speak Dutch, French and English.</p>
+    <p class="rv">Since 2009, I have been a teaching assistant in anatomy on the physiotherapy and manual therapy programme at the VUB.</p>
     <div class="team rv">
       <div class="photo has"><img loading="lazy" src="eli.jpg" alt="Eli Schaillée, physiotherapist" width="640" height="800" decoding="async"></div>
       <ul class="list">
@@ -605,11 +596,8 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     <details class="more rv"><summary><i></i>Registration and insurance</summary><div class="in">
       <dl>
         <dt>NIHDI (RIZIV) number</dt><dd>5/36329/81/527</dd>
-        <dt>Company number (KBO)</dt><dd>0835.386.566</dd>
         <dt>Insurance</dt><dd>AMMA</dd>
-        <dt>Member of</dt><dd>Axxon and Mathera</dd>
-        <dt>Convention</dt><dd>Not contracted (non-conventioned)</dd>
-        <dt>Quality</dt><dd>Has met the quality requirements of the national quality register since 2016</dd>
+        <dt>Member of</dt><dd><a class="u" href="http://www.axxon.be/" target="_blank" rel="noopener">Axxon</a> and <a class="u" href="http://www.mathera.be/" target="_blank" rel="noopener">Mathera</a></dd>
       </dl>
     </div></details>
   </div>
@@ -626,6 +614,7 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
     </div>
     <p class="note rv">Fee for common conditions, without increased reimbursement. Praktijk E.S. is not contracted (non-conventioned). For patients entitled to increased reimbursement, the practice is required to apply the NIHDI rates; your reimbursement is then the same as with a contracted physiotherapist.</p>
     <p class="note rv">Payment: at the practice per session, in cash or via a Mobilepay QR code. For home visits, periodically by bank transfer.</p>
+    <p class="note rv">For reimbursement by your health insurance fund, a doctor's prescription is required. Bring it to the first session.</p>
     <details class="more rv"><summary><i></i>Full fee table</summary><div class="in">
       <div class="vr" role="group" aria-label="Increased reimbursement">
         <button type="button" class="vrb" data-v="z" aria-pressed="true">Without increased reimbursement</button>
@@ -654,32 +643,23 @@ html.mjump .mnav,html.mjump .mnav *,html.mjump .mbtn i,html.mjump .rv{transition
 <tr class="grp"><th scope="row" class="p">Perinatal physiotherapy</th><td class="zit">max. 9 per pregnancy<small>30 min</small></td><td class="n bd"><span class="z">€ 39,00</span><span class="m">€ 33,88</span></td><td class="n bd"><span class="z">–</span><span class="m">–</span></td><td class="n bd"><span class="z">€ 5,50</span><span class="m">€ 1,16</span></td><td class="n tot"><span class="z">€ 44,50</span><span class="m">€ 35,04</span></td><td class="n"><span class="z">€ 20,73</span><span class="m">€ 31,38</span></td><td class="n"><span class="z">€ 14,31</span><span class="m">€ 3,66</span></td><td class="n"><span class="z">€ 9,46</span><span class="m">–</span></td></tr>
 <tr class="grp"><th scope="row" class="p">Palliative physiotherapy</th><td class="zit">every session<small>30 min</small></td><td class="n bd"><span class="z">€ 39,00</span><span class="m">€ 27,72</span></td><td class="n bd"><span class="z">–</span><span class="m">–</span></td><td class="n bd"><span class="z">€ 5,50</span><span class="m">€ 1,35</span></td><td class="n tot"><span class="z">€ 44,50</span><span class="m">€ 29,07</span></td><td class="n"><span class="z">€ 21,82</span><span class="m">€ 29,07</span></td><td class="n"><span class="z">€ 7,25</span><span class="m">€ 0,00</span></td><td class="n"><span class="z">€ 15,43</span><span class="m">–</span></td></tr></tbody></table></div>
       </div>
-      <p class="note">At home, the fee consists of the treatment, a travel fee of €5.50 (€1.16 with increased reimbursement) and, at the first session, the intake with written report.</p>
     </div></details>
     <span class="flag rv">Amounts taken from the current site · to be confirmed</span>
   </div>
 </section>
 
-<section class="s center plain" id="faq">
-  <div class="wide">
-    <span class="lab rv">Frequently asked questions</span>
-    <h2 class="rv">What you want to <em class="ac" style="--ac:var(--c2)">know</em> first</h2>
-    <div class="faq rv"><details class="glass more-faq"><summary>How do I book an appointment?<i aria-hidden="true"></i></summary><div class="in"><p>Call 02/308.92.95, Monday to Friday between 8 am and 9 pm.</p></div></details><details class="glass more-faq"><summary>Do I need a prescription?<i aria-hidden="true"></i></summary><div class="in"><p>For reimbursement by your health insurance fund, a doctor's prescription is required. Bring it to the first session.</p></div></details><details class="glass more-faq"><summary>What does a session cost?<i aria-hidden="true"></i></summary><div class="in"><p>A first session of 45 minutes, including intake and a written report, costs €57.00. A 30 minute follow-up session costs €39.00. The full table is in the fees section above.</p></div></details><details class="glass more-faq"><summary>What does “not contracted” mean for me?<i aria-hidden="true"></i></summary><div class="in"><p>The fee at Praktijk E.S. is higher than the NIHDI rate; your health insurance fund reimburses the standard NIHDI amount. If you are entitled to increased reimbursement, the practice is required to apply the NIHDI rates and your reimbursement is the same as with a contracted physiotherapist.</p></div></details><details class="glass more-faq"><summary>Does Praktijk E.S. make home visits?<i aria-hidden="true"></i></summary><div class="in"><p>Yes. Request a home visit by phone. A travel fee of €5.50 is added (€1.16 with increased reimbursement).</p></div></details><details class="glass more-faq"><summary>How do I pay?<i aria-hidden="true"></i></summary><div class="in"><p>At the practice per session, in cash or via a Mobilepay QR code. For home visits, periodically by bank transfer.</p></div></details><details class="glass more-faq"><summary>Does Praktijk E.S. treat children?<i aria-hidden="true"></i></summary><div class="in"><p>Yes, including respiratory physiotherapy for breathing problems.</p></div></details><details class="glass more-faq"><summary>In which language will I be treated?<i aria-hidden="true"></i></summary><div class="in"><p>In Dutch, French or English, as you prefer.</p></div></details></div>
-  </div>
-</section>
+
 <section class="s end" id="contact">
   <h2 class="rv">Pain or an injury?<br><em class="ac" style="--ac:var(--c1)">Call</em> Praktijk E.S.</h2>
   <a class="pill rv" href="tel:+3223089295">Call 02/308.92.95</a>
   <div class="cgrid glass rv">
     <div><span class="lab">Opening hours</span><p>Monday to Friday<br>8 am to 9 pm</p></div>
     <div><span class="lab">Address</span><p>Paardenwater 14A<br>1560 Hoeilaart<br><a class="u" href="https://www.google.com/maps/search/?api=1&amp;query=Paardenwater+14A+1560+Hoeilaart">View on Google Maps</a></p></div>
-    <div><span class="lab">Languages</span><p>Nederlands<br>Français · English</p></div>
     <div><span class="lab">Follow</span><p><a class="u" href="https://www.instagram.com/praktijkes/">Instagram</a><br><a class="u" href="http://www.facebook.com/Praktijk.ES/">Facebook</a><br><a class="u" href="https://www.linkedin.com/company/70533868/">LinkedIn</a></p></div>
   </div>
   <footer>
-    <span>© Praktijk E.S. · NIHDI 5/36329/81/527 · CBE 0835.386.566 · Anatomy: <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" style="margin:0">BodyParts3D © DBCLS</a>, CC BY 4.0</span>
+    <span>© Praktijk E.S. · CBE 0835.386.566 · Anatomy: <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" style="margin:0">BodyParts3D © DBCLS</a>, CC BY 4.0</span>
     <span class="legal"><a href="privacy-en.html">Privacy policy</a></span>
-    <span>Links: <a href="http://www.kinesitherapie.be/">Kinesitherapie.be</a><a href="http://www.axxon.be/">Axxon</a><a href="http://www.mathera.be/">Mathera</a></span>
   </footer>
 </section>
 </main>
@@ -1063,7 +1043,7 @@ function render(){const pl=places[st.p];if(st.k>=pl.paths.length)st.k=0;
   res.innerHTML=path.rows.map(r=>{const v=r[st.v];const pay=Math.max(0,v.fee-v.back);
     return `<div class="row"><div class="t"><b>${r.label}</b><span>${r.meta}</span></div>
       <div class="big"><span>${S.pay}</span><strong>${fmt.format(pay)}</strong></div>
-      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div><div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('')+(st.p===1?`<p class="note2">${S.home}</p>`:'');}
+      <div class="d">${S.fee} ${fmt.format(v.fee)} · ${S.back} ${fmt.format(v.back)}</div><div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div>${r.code?`<div class="c">${S.code}: ${r.code}</div>`:''}</div>`;}).join('');}
 box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentElement.dataset.q;if(!q)return;
   if(q==='p')st.p=+b.dataset.i;else if(q==='v')st.v=b.dataset.i;else st.k=+b.dataset.i;
   b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
@@ -1076,7 +1056,7 @@ lb.addEventListener('click',()=>{const o=l2.hidden;l2.hidden=!o;lb.setAttribute(
   <div class="ln"><span>${S.back}</span><span>${fmt.format(v.back)}</span></div>
   <div class="ln pay"><span>${S.pay}</span><span>${fmt.format(v.fee-v.back)}</span></div>
   <div class="d2">${parts(v)}</div><div class="d2">${S.rem} ${fmt.format(v.rem)} · ${S.sup} ${fmt.format(v.sup)}</div></div>`;}).join('')+
-  (r.code?`<div class="c">${S.code}: ${r.code}</div>`:'')+`</div>`).join('')+`</div>`).join('')).join('')+`<p class="note2">${S.home}</p>`;}});
+  (r.code?`<div class="c">${S.code}: ${r.code}</div>`:'')+`</div>`).join('')+`</div>`).join('')).join('');}});
 panel.insertBefore(box,det||null);render();
 })();
 </script>
