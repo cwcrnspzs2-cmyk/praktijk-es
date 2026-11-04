@@ -982,7 +982,7 @@ document.querySelectorAll('.lang a').forEach(a=>a.addEventListener('click',()=>{
 const minShow=0,t0=performance.now();
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>{setTimeout(()=>{hideLoader();requestAnimationFrame(frame);},Math.max(0,minShow-(performance.now()-t0)));});
 };
-{let run=false;const B=()=>{if(run)return;run=true;__b();};const L=src=>new Promise((ok,no)=>{const e=document.createElement('script');e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e);});const go=()=>Promise.all([L(__THREE),L('shapes.js')]).then(B,B);const W=()=>{if(document.readyState==='complete'&&hideLoader.d)setTimeout(go,300);else setTimeout(W,120);};W();}
+{let run=false;const B=()=>{if(run)return;run=true;__b();};const L=src=>new Promise((ok,no)=>{const e=document.createElement('script');e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e);});const go=()=>Promise.all([L(__THREE),L('shapes.js?v='+'859393bf')]).then(B,B);const W=()=>{if(document.readyState==='complete'&&hideLoader.d)setTimeout(go,300);else setTimeout(W,120);};W();}
 })();
 </script>
 
