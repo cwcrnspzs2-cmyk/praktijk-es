@@ -765,7 +765,7 @@ SH.explode=(function(src){const pos=new Float32Array(N*3),ctr=new Float32Array(N
 const ST=MOBILE?[
   ['muscle',0,1.12,.7,-.25,0],['skel',0,1.15,.6,.25,1],['hand',0,.72,.85,.3,2],['spine',0,.78,.5,.9,3],['gear',0,1.08,.56,-.3,4]
 ]:[
-  ['muscle',2.5,-.32,1.38,-.3,0],['skel',-2.75,-.2,1.35,.3,1],['hand',2.6,-.9,1.65,-.35,2],['spine',-2.7,-.1,1.15,-.9,3],['gear',2.6,-.15,1.3,-.35,4]
+  ['muscle',2.5,-.32,1.38,-.3,0],['skel',-2.75,-.2,1.35,.3,1],['hand',2.6,-.9,1.65,-.35,2],['spine',-2.7,-.1,1.15,-.9,3],['gear',2.6,-.3,.95,-.35,4]
 ];
 if(!MOBILE){const fitSk=()=>{const el=document.getElementById('gl');const asp=(el.clientWidth||innerWidth)/(el.clientHeight||innerHeight);const hw=11*Math.tan(17.5*Math.PI/180)*asp,W=el.clientWidth||innerWidth,t=document.querySelector('#klachten .wide'),tl=t?t.getBoundingClientRect().left:W*.39;ST[1][1]=Math.min(-2.2,(tl/2/W-.5)*2*hw);const H=el.clientHeight||innerHeight;ST[2][2]=Math.max(-1.6,Math.min(-.9,-.4-693.6/H));};fitSk();addEventListener('resize',fitSk);}
 const COLS=[[1,.29,.11],[.12,.36,1],[.56,.24,1],[.02,.74,.36],[1,.18,.53]];
@@ -791,7 +791,7 @@ vertexShader:`
 attribute float kA;attribute float kB;attribute vec3 dA;attribute vec3 dB;attribute vec3 aB;attribute vec3 cA;attribute vec3 cB;attribute vec4 aR;attribute vec3 aS;
 uniform float uBoost;uniform float uT,uTime,uHover,uAspect,uSize,uRad,uPush,uMotion,uFade;uniform vec2 uMouse;uniform vec3 uColA,uColB;
 varying float vA,vPx,vAng,vBr,vLen;varying vec3 vCol;
-vec3 palc(float k){float i=k-10.;if(i<.5)return vec3(1.,.48,0.);if(i<1.5)return vec3(.12,.36,1.);if(i<2.5)return vec3(.02,.71,.36);if(i<3.5)return vec3(.56,.24,1.);if(i<4.5)return vec3(1.,.18,.53);return vec3(0.,.70,.78);}
+vec3 palc(float k){float i=k-10.;if(i<.5)return vec3(1.,.48,0.);if(i<1.5)return vec3(.12,.36,1.);if(i<2.5)return vec3(.02,.71,.36);if(i<3.5)return vec3(.56,.24,1.);if(i<4.5)return vec3(1.,.18,.53);if(i<5.5)return vec3(0.,.70,.78);return vec3(.3,.1,.62);}
 void main(){
   float t=clamp((uT-aR.x*.45)/.55,0.,1.);
   float e=t<.5?4.*t*t*t:1.-pow(-2.*t+2.,3.)/2.;
@@ -960,7 +960,7 @@ function frame(now){
   let k,t;
   if(intro<1&&ts<.05){setPair(-1,0);U.uT.value=intro;k=0;t=0;}
   else{k=Math.min(ST.length-1,Math.floor(cs));const k2=Math.min(ST.length-1,k+1);t=cs-k;setPair(k,k2);U.uT.value=t;}
-  const a=ST[k],b=ST[Math.min(ST.length-1,k+1)],e=ease(t);const gw=(a[0]==='gear'?1-e:0)+(b[0]==='gear'?e:0);U.uBoost.value=1+.3*gw;
+  const a=ST[k],b=ST[Math.min(ST.length-1,k+1)],e=ease(t);const gw=(a[0]==='gear'?1-e:0)+(b[0]==='gear'?e:0);U.uBoost.value=1;
   if(MOBILE&&performance.now()-lastMove>900)thov=0;
   {const a1=1-Math.exp(-_dt*7.7),a2=1-Math.exp(-_dt*3.7);mx+=(tmx-mx)*a1;my+=(tmy-my)*a1;hov+=(thov-hov)*a2;}
   U.uMouse.value.set(mx,my);U.uHover.value=hov;U.uRad.value=(MOBILE?.26:.2)*(1+.6*gw);U.uPush.value=.15*(1+.5*gw);
